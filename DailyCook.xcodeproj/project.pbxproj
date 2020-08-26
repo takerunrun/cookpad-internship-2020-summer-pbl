@@ -57,6 +57,10 @@
 		8410DF0D24F648E00078B5AF /* DailyCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8410DF1124F648E00078B5AF /* DailyCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCookUITests.swift; sourceTree = "<group>"; };
 		8410DF1324F648E00078B5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8410DF2124F650080078B5AF /* NotoSansCJKjp-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Black.otf"; sourceTree = "<group>"; };
+		8410DF2224F650180078B5AF /* NotoSansCJKjp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Bold.otf"; sourceTree = "<group>"; };
+		8410DF2324F6502A0078B5AF /* NotoSansCJKjp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Medium.otf"; sourceTree = "<group>"; };
+		8410DF2424F650390078B5AF /* NotoSansCJKjp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Regular.otf"; sourceTree = "<group>"; };
 		A7157C6F578BA75A500991E0 /* Pods_DailyCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33204B7D02D874C0B4D5D21 /* Pods-DailyCook-DailyCookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyCook-DailyCookUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyCook-DailyCookUITests/Pods-DailyCook-DailyCookUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C4D4C3B4B0A0945FA78020A3 /* Pods_DailyCook_DailyCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyCook_DailyCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -175,6 +179,10 @@
 		8410DF2024F64F9F0078B5AF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF2124F650080078B5AF /* NotoSansCJKjp-Black.otf */,
+				8410DF2224F650180078B5AF /* NotoSansCJKjp-Bold.otf */,
+				8410DF2324F6502A0078B5AF /* NotoSansCJKjp-Medium.otf */,
+				8410DF2424F650390078B5AF /* NotoSansCJKjp-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
