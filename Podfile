@@ -6,6 +6,10 @@ target 'DailyCook' do
   use_frameworks!
 
   # Pods for DailyCook
+  pod 'SnapKit', '~> 5.0.0'
+  pod 'Then'
+  pod 'ReactorKit'
+  pod 'ReusableKit/RxSwift'
 
   target 'DailyCookTests' do
     inherit! :search_paths
