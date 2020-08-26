@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -126,6 +126,7 @@
 		8410DEEE24F648DF0078B5AF /* DailyCook */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF1F24F64F780078B5AF /* Resources */,
 				8410DEEF24F648DF0078B5AF /* AppDelegate.swift */,
 				8410DEF124F648DF0078B5AF /* SceneDelegate.swift */,
 				8410DEF324F648DF0078B5AF /* ContentView.swift */,
@@ -163,6 +164,13 @@
 			path = DailyCookUITests;
 			sourceTree = "<group>";
 		};
+		8410DF1F24F64F780078B5AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,7 +181,6 @@
 				52178E11061F20EBFB1CF9BD /* Pods-DailyCookTests.debug.xcconfig */,
 				09FF4549516AEE325257E3AB /* Pods-DailyCookTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
