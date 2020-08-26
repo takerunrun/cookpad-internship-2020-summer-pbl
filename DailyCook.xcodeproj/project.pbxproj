@@ -205,6 +205,7 @@
 		8410DF2A24F652D20078B5AF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF2D24F653430078B5AF /* Organisms */,
 				8410DF2C24F653280078B5AF /* Molecules */,
 				8410DF2B24F652FB0078B5AF /* Atoms */,
 			);
@@ -223,6 +224,13 @@
 			children = (
 			);
 			path = Molecules;
+			sourceTree = "<group>";
+		};
+		8410DF2D24F653430078B5AF /* Organisms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Organisms;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
