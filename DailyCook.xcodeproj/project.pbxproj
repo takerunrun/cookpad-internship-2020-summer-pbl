@@ -138,6 +138,7 @@
 		8410DEEE24F648DF0078B5AF /* DailyCook */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF3324F6557E0078B5AF /* Utilities */,
 				8410DF2A24F652D20078B5AF /* UI */,
 				8410DF2524F651C90078B5AF /* Extensions */,
 				8410DF1F24F64F780078B5AF /* Resources */,
@@ -245,6 +246,13 @@
 			children = (
 			);
 			path = Pages;
+			sourceTree = "<group>";
+		};
+		8410DF3324F6557E0078B5AF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
