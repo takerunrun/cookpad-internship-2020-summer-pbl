@@ -134,6 +134,7 @@
 		8410DEEE24F648DF0078B5AF /* DailyCook */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF2A24F652D20078B5AF /* UI */,
 				8410DF2524F651C90078B5AF /* Extensions */,
 				8410DF1F24F64F780078B5AF /* Resources */,
 				8410DEEF24F648DF0078B5AF /* AppDelegate.swift */,
@@ -199,6 +200,13 @@
 				8410DF2824F652740078B5AF /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8410DF2A24F652D20078B5AF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
