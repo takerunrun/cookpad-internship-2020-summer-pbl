@@ -167,8 +167,16 @@
 		8410DF1F24F64F780078B5AF /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF2024F64F9F0078B5AF /* Fonts */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		8410DF2024F64F9F0078B5AF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
