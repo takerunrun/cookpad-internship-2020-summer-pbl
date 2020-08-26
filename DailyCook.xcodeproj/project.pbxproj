@@ -248,6 +248,7 @@
 		8410DF2E24F653570078B5AF /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				8410DF3824F659280078B5AF /* TabBar */,
 			);
 			path = Pages;
 			sourceTree = "<group>";
@@ -259,6 +260,13 @@
 				8410DF3624F656050078B5AF /* ViewConstructor.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		8410DF3824F659280078B5AF /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
