@@ -125,13 +125,13 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
             .bind(to: lockedNumberLabel.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.recipe.isCooked }
+        reactor.state.map { $0.recipe.isLocked }
             .distinctUntilChanged()
-            .bind { [weak self] isCooked in
-                self?.borderView.isHidden = isCooked
-                self?.imageView.isHidden = !isCooked
-                self?.recipeNumberLabel.isHidden = !isCooked
-                self?.recipeNameLabel.isHidden = !isCooked
+            .bind { [weak self] isLocked in
+                self?.borderView.isHidden = !isLocked
+                self?.imageView.isHidden = isLocked
+                self?.recipeNumberLabel.isHidden = isLocked
+                self?.recipeNameLabel.isHidden = isLocked
             }
             .disposed(by: disposeBag)
     }
