@@ -61,6 +61,8 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
     
     // MARK: - Bind Method
     func bind(reactor: RecipeListReactor) {
+        header.reactor = reactor
+        
         // Action
         reactor.action.onNext(.load)
         
