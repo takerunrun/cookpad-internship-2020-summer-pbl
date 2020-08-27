@@ -33,15 +33,6 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     
     private let header = RecipeDetailHeaderView()
     
-    private let recipeUrlButton = RecipeUrlButton()
-    
-    private let postImageMessageLabel = UILabel().then {
-        $0.apply(fontStyle: .medium, size: 13)
-        $0.textColor = Color.textGray
-    }
-    
-    private let postImageButton = PostImageButton()
-    
     private let cookedRecipeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = RecipeDetailCookedRecipeCell.Const.itemSize
         $0.minimumLineSpacing = 0
@@ -64,11 +55,6 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         contentScrollView.addSubview(stackView)
         stackView.addArrangedSubview(header)
         stackView.setCustomSpacing(32, after: header)
-        stackView.addArrangedSubview(recipeUrlButton)
-        stackView.setCustomSpacing(32, after: recipeUrlButton)
-        stackView.addArrangedSubview(postImageMessageLabel)
-        stackView.setCustomSpacing(8, after: postImageMessageLabel)
-        stackView.addArrangedSubview(postImageButton)
         stackView.addArrangedSubview(cookedRecipeCollectionView)
     }
     
@@ -82,21 +68,6 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         header.snp.makeConstraints {
             $0.width.equalTo(DeviceSize.screenWidth)
         }
-        recipeUrlButton.snp.makeConstraints {
-            $0.height.equalTo(36)
-            $0.width.equalTo(DeviceSize.screenWidth - 32)
-            $0.left.right.equalToSuperview().inset(16)
-        }
-        postImageMessageLabel.snp.makeConstraints {
-            $0.height.equalTo(24)
-            $0.width.equalTo(DeviceSize.screenWidth - 32)
-            $0.left.right.equalToSuperview().inset(16)
-        }
-        postImageButton.snp.makeConstraints {
-            $0.height.equalTo(200)
-            $0.width.equalTo(DeviceSize.screenWidth - 32)
-            $0.left.right.equalToSuperview().inset(16)
-        }
     }
     
     // MARK: - Bind Method
@@ -106,19 +77,6 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         // Action
         
         // State
-        reactor.state.map { $0.recipeDetail.isCooked }
-            .distinctUntilChanged()
-            .map { isCooked in
-                if isCooked {
-                    return "美味しかったらまた今度作ってみよう！"
-                } else {
-                    // TODO: Replace with next recipe number
-                    return "作って写真をのせると #006 に進めるよ！"
-                }
-            }
-            .bind(to: postImageMessageLabel.rx.text)
-            .disposed(by: disposeBag)
-        
         reactor.state.map { $0.cookedRecipeReactors }
             .distinctUntilChanged()
             .bind(to: cookedRecipeCollectionView.rx.items(Reusable.cookedRecipeCell)) { _, reactor, cell in
