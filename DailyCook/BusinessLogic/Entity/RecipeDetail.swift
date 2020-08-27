@@ -17,4 +17,5 @@ struct RecipeDetail: Equatable {
     let point: String
     let recipeUrl: String
     let isCooked: Bool
+    let isSkipped: Bool
 }
