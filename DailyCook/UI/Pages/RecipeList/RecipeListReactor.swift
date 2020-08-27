@@ -40,7 +40,7 @@ final class RecipeListReactor: Reactor {
     
     private func loadRecipes() -> Observable<[Recipe]> {
         // TODO: Replace test data
-        return .just(TestData.recipes(count: 9))
+        return .just(TestData.recipeListRecipes())
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
