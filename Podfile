@@ -15,6 +15,7 @@ target 'DailyCook' do
   pod 'FirebaseFirestoreSwift'
   pod 'Firebase/Storage'
   pod "RxGesture"
+  pod 'FirebaseUI/Storage'
 
   target 'DailyCookTests' do
     inherit! :search_paths
