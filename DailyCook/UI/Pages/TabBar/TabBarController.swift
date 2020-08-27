@@ -23,9 +23,9 @@ class TabBarController: UITabBarController {
     // MARK: - Setup Methods
     private func setupViewControllers() {
         viewControllers = [
-            RecipeListViewController().then {
+            UINavigationController(rootViewController: RecipeListViewController().then {
                 $0.reactor = RecipeListReactor()
-            },
+            }),
 //            UINavigationController(rootViewController: RecipeDetailViewController().then {
 //                $0.reactor = RecipeDetailReactor()
 //            }),
