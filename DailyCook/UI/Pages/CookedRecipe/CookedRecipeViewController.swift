@@ -29,6 +29,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     
     private let mainDishView = CookedRecipeMainDishView()
     
+    private let sideDishView = CookedRecipeSideDishView()
+    
     // MARK: - Life Cycles
     
     override func viewDidLoad() {
@@ -43,6 +45,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(mainDishView)
+        stackView.setCustomSpacing(32, after: mainDishView)
+        stackView.addArrangedSubview(sideDishView)
     }
     
     func setupViewConstraints() {
@@ -57,6 +61,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     // MARK: - Bind Method
     func bind(reactor: CookedRecipeReactor) {
         mainDishView.reactor = reactor
+        sideDishView.reactor = reactor
         
         // Action
         
