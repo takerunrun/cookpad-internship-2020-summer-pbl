@@ -28,6 +28,8 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     
     private let header = RecipeDetailHeaderView()
     
+    private let recipeUrlButton = RecipeUrlButton()
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         view.addSubview(contentScrollView)
         contentScrollView.addSubview(stackView)
         stackView.addArrangedSubview(header)
+        stackView.addArrangedSubview(recipeUrlButton)
     }
     
     func setupViewConstraints() {
@@ -52,6 +55,11 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         }
         header.snp.makeConstraints {
             $0.width.equalTo(DeviceSize.screenWidth)
+        }
+        recipeUrlButton.snp.makeConstraints {
+            $0.height.equalTo(36)
+            $0.width.equalTo(DeviceSize.screenWidth - 32)
+            $0.left.right.equalToSuperview().inset(16)
         }
     }
     
