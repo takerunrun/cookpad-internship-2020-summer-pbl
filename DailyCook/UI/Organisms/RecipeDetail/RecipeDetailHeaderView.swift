@@ -35,6 +35,12 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.textColor = Color.textGray
     }
     
+    private let flagImageView = UIImageView().then {
+        $0.image = #imageLiteral(resourceName: "flag").withRenderingMode(.alwaysTemplate)
+        $0.contentMode = .scaleAspectFit
+        $0.tintColor = Color.textBlack
+    }
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -52,6 +58,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         addSubview(imageView)
         addSubview(recipeNumberLabel)
         addSubview(recipeNameLabel)
+        addSubview(flagImageView)
     }
     
     func setupViewConstraints() {
@@ -66,6 +73,11 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         recipeNameLabel.snp.makeConstraints {
             $0.top.equalTo(recipeNumberLabel.snp.bottom).offset(24)
             $0.left.equalToSuperview().inset(16)
+        }
+        flagImageView.snp.makeConstraints {
+            $0.top.equalTo(recipeNameLabel.snp.bottom).offset(16)
+            $0.left.equalToSuperview().inset(16)
+            $0.size.equalTo(32)
             $0.bottom.equalToSuperview().inset(24)
         }
     }
