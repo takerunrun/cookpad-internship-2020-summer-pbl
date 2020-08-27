@@ -11,6 +11,9 @@ target 'DailyCook' do
   pod 'ReactorKit'
   pod 'ReusableKit/RxSwift'
   pod 'Kingfisher', '~> 5.0'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
+  pod 'Firebase/Storage'
 
   target 'DailyCookTests' do
     inherit! :search_paths
