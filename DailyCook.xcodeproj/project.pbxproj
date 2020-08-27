@@ -250,6 +250,7 @@
 		8410DF2E24F653570078B5AF /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				846A595924F7333A003E3E66 /* RecipeList */,
 				8410DF3824F659280078B5AF /* TabBar */,
 			);
 			path = Pages;
@@ -270,6 +271,13 @@
 				8410DF3924F6594C0078B5AF /* TabBarController.swift */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		846A595924F7333A003E3E66 /* RecipeList */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecipeList;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
