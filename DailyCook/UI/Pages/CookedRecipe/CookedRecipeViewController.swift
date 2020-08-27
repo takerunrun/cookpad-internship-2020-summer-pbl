@@ -73,7 +73,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         mainDishView.collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RecipeDetailViewController().then {
-                    $0.reactor = RecipeDetailReactor()
+                    $0.reactor = reactor.createRecipeDetailFromMainDish(indexPath: indexPath)
                 }
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
@@ -82,7 +82,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         sideDishView.collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RecipeDetailViewController().then {
-                    $0.reactor = RecipeDetailReactor()
+                    $0.reactor = reactor.createRecipeDetailFromSideDish(indexPath: indexPath)
                 }
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
@@ -91,7 +91,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         soupView.collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RecipeDetailViewController().then {
-                    $0.reactor = RecipeDetailReactor()
+                    $0.reactor = reactor.createRecipeDetailFromSoup(indexPath: indexPath)
                 }
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
