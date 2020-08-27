@@ -294,6 +294,7 @@
 		8410DF2E24F653570078B5AF /* Pages */ = {
 			isa = PBXGroup;
 			children = (
+				846A598B24F77ED6003E3E66 /* CookedRecipe */,
 				846A597624F75BE5003E3E66 /* RecipeDetail */,
 				846A595924F7333A003E3E66 /* RecipeList */,
 				8410DF3824F659280078B5AF /* TabBar */,
@@ -389,6 +390,13 @@
 				846A598924F77520003E3E66 /* RecipeDetailCookedRecipeReactor.swift */,
 			);
 			path = RecipeDetailCookedRecipe;
+			sourceTree = "<group>";
+		};
+		846A598B24F77ED6003E3E66 /* CookedRecipe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CookedRecipe;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
