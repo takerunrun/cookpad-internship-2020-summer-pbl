@@ -12,7 +12,7 @@ struct TestData {
     static func recipe() -> Recipe {
         return Recipe(
             id: testID(),
-            number: Int.random(in: 1..<100),
+            number: Int.random(in: 1 ..< 100),
             name: "やみつきキャベツ",
             imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg"
         )
@@ -20,6 +20,19 @@ struct TestData {
     
     static func recipes(count: Int) -> [Recipe] {
         return (0 ..< count).map { _ in recipe() }
+    }
+    
+    static func recipeDetail() -> RecipeDetail {
+        return RecipeDetail(
+            id: testID(),
+            number: Int.random(in: 1 ..< 100),
+            name: "やみつきキャベツ",
+            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg",
+            category: "副菜",
+            point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
+            recipeUrl: "https://mariegohan.com/2669",
+            isCooked: false
+        )
     }
     
     private static func testID() -> String {
