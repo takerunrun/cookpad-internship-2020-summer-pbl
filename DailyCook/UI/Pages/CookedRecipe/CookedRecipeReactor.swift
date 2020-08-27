@@ -13,7 +13,9 @@ final class CookedRecipeReactor: Reactor {
     enum Mutation {}
     
     struct State {
+        // TODO: Replace initial test data
         var mainDishRecipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 5).map { RecipeListCellReactor(recipe: $0) }
+        var sideDishRecipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 5).map { RecipeListCellReactor(recipe: $0) }
     }
     
     let initialState = State()
