@@ -20,4 +20,19 @@ final class CookedRecipeReactor: Reactor {
     }
     
     let initialState = State()
+    
+    func createRecipeDetailFromMainDish(indexPath: IndexPath) -> RecipeDetailReactor {
+        let recipe = currentState.mainDishRecipeCellReactors[indexPath.row].currentState.recipe
+        return RecipeDetailReactor(recipe: recipe)
+    }
+    
+    func createRecipeDetailFromSideDish(indexPath: IndexPath) -> RecipeDetailReactor {
+        let recipe = currentState.sideDishRecipeCellReactors[indexPath.row].currentState.recipe
+        return RecipeDetailReactor(recipe: recipe)
+    }
+    
+    func createRecipeDetailFromSoup(indexPath: IndexPath) -> RecipeDetailReactor {
+        let recipe = currentState.soupRecipeCellReactors[indexPath.row].currentState.recipe
+        return RecipeDetailReactor(recipe: recipe)
+    }
 }
