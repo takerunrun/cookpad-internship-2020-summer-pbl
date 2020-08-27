@@ -265,6 +265,7 @@
 		8410DF2D24F653430078B5AF /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				846A597724F75C0A003E3E66 /* RecipeDetail */,
 				846A595E24F7368D003E3E66 /* RecipeList */,
 			);
 			path = Organisms;
@@ -342,6 +343,13 @@
 			sourceTree = "<group>";
 		};
 		846A597624F75BE5003E3E66 /* RecipeDetail */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecipeDetail;
+			sourceTree = "<group>";
+		};
+		846A597724F75C0A003E3E66 /* RecipeDetail */ = {
 			isa = PBXGroup;
 			children = (
 			);
