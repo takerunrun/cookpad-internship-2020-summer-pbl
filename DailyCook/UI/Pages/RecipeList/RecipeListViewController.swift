@@ -10,6 +10,9 @@ import UIKit
 
 final class RecipeListViewController: UIViewController, ViewConstructor {
     
+    // MARK: - Views
+    private let header = RecipeListHeaderView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -18,10 +21,14 @@ final class RecipeListViewController: UIViewController, ViewConstructor {
     }
     
     func setupViews() {
-        
+        view.addSubview(header)
     }
     
     func setupViewConstraints() {
-        
+        header.snp.makeConstraints {
+            $0.center.equalToSuperview()
+            $0.width.equalTo(RecipeListHeaderView.Const.width)
+            $0.height.equalTo(RecipeListHeaderView.Const.height)
+        }
     }
 }
