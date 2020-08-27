@@ -9,7 +9,9 @@
 import ReactorKit
 
 final class RecipeDetailReactor: Reactor {
-    enum Action {}
+    enum Action {
+        case postImageData(Data?)
+    }
     enum Mutation {}
     
     struct State {
@@ -26,5 +28,12 @@ final class RecipeDetailReactor: Reactor {
     
     init(recipe: Recipe) {
         initialState = State(recipe: recipe)
+    }
+    
+    func mutate(action: Action) -> Observable<Mutation> {
+        switch action {
+        case let .postImageData(imageData):
+            return .empty()
+        }
     }
 }
