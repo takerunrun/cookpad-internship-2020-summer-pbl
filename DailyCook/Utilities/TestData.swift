@@ -18,8 +18,10 @@ struct TestData {
             category: "副菜",
             point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
             recipeUrl: "https://mariegohan.com/2669",
+            cookedImageUrls: [],
             isCooked: false,
-            isSkipped: false
+            isSkipped: false,
+            isLocked: true
         )
     }
     
@@ -36,8 +38,10 @@ struct TestData {
             category: "副菜",
             point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
             recipeUrl: "https://mariegohan.com/2669",
+            cookedImageUrls: [],
             isCooked: isCooked,
-            isSkipped: isSkipped
+            isSkipped: isSkipped,
+            isLocked: true
         )
     }
     
@@ -68,8 +72,10 @@ struct TestData {
             category: "副菜",
             point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
             recipeUrl: "https://mariegohan.com/2669",
+            cookedImageUrls: [],
             isCooked: false,
-            isSkipped: false
+            isSkipped: false,
+            isLocked: true
         )
     }
     
