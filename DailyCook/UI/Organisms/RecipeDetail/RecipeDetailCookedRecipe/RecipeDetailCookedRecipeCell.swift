@@ -58,7 +58,7 @@ final class RecipeDetailCookedRecipeCell: UICollectionViewCell, View, ViewConstr
         }
         imageView.snp.makeConstraints {
             $0.top.equalTo(dateLabel.snp.bottom)
-            $0.left.right.bottom.equalToSuperview()
+            $0.left.right.bottom.equalToSuperview().inset(16)
         }
     }
     
