@@ -53,4 +53,13 @@ final class RecipeListReactor: Reactor {
         }
         return state
     }
+    
+    func createRecipeDetailReactorFromTodaysRecipe() -> RecipeDetailReactor {
+        return RecipeDetailReactor(recipe: currentState.todaysRecipe)
+    }
+    
+    func createRecipeDetailReactor(indexPath: IndexPath) -> RecipeDetailReactor {
+        let recipe = currentState.recipeCellReactors[indexPath.row].currentState.recipe
+        return RecipeDetailReactor(recipe: recipe)
+    }
 }
