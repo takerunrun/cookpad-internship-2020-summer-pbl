@@ -41,6 +41,12 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.tintColor = Color.textBlack
     }
     
+    private let pointTitleLabel = UILabel().then {
+        $0.apply(fontStyle: .regular, size: 13)
+        $0.textColor = Color.textBlack
+        $0.text = "料理のコツ"
+    }
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -59,6 +65,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         addSubview(recipeNumberLabel)
         addSubview(recipeNameLabel)
         addSubview(flagImageView)
+        addSubview(pointTitleLabel)
     }
     
     func setupViewConstraints() {
@@ -79,6 +86,10 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
             $0.left.equalToSuperview().inset(16)
             $0.size.equalTo(32)
             $0.bottom.equalToSuperview().inset(24)
+        }
+        pointTitleLabel.snp.makeConstraints {
+            $0.centerY.equalTo(flagImageView)
+            $0.left.equalTo(flagImageView.snp.right).offset(8)
         }
     }
     
