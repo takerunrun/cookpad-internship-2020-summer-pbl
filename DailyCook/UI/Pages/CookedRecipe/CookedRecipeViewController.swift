@@ -27,6 +27,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         $0.distribution = .fill
     }
     
+    private let mainDishView = CookedRecipeMainDishView()
+    
     // MARK: - Life Cycles
     
     override func viewDidLoad() {
@@ -40,6 +42,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     func setupViews() {
         view.addSubview(scrollView)
         scrollView.addSubview(stackView)
+        stackView.addArrangedSubview(mainDishView)
     }
     
     func setupViewConstraints() {
@@ -53,6 +56,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     
     // MARK: - Bind Method
     func bind(reactor: CookedRecipeReactor) {
+        mainDishView.reactor = reactor
+        
         // Action
         
         // State
