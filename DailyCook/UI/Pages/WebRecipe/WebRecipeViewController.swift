@@ -11,7 +11,7 @@ import UIKit
 
 class WebRecipeViewController: UIViewController, ViewConstructor {
     let webView = WKWebView()
-    let url = URL(string: "https://takerunrun.github.io/goshuingo-privacy-policy/")
+    let url = URL(string: "https://mariegohan.com/2669")
     
     private var progressView = UIProgressView(progressViewStyle: .bar)
     private var activityIndicatorView = UIActivityIndicatorView()
