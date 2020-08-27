@@ -7,6 +7,7 @@
 //
 
 import ReactorKit
+import Firebase
 
 final class RecipeListReactor: Reactor {
     enum Action {
@@ -23,6 +24,7 @@ final class RecipeListReactor: Reactor {
     }
     
     let initialState = State()
+    private let collection: CollectionReference = Firestore.firestore().collection("recipes")
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
@@ -40,7 +42,30 @@ final class RecipeListReactor: Reactor {
     
     private func loadRecipes() -> Observable<[Recipe]> {
         // TODO: Replace test data
-        return .just(TestData.recipeListRecipes())
+//        return .just(TestData.recipeListRecipes())
+        return fetchRecipesFromFirestore()
+    }
+    
+    private func fetchRecipesFromFirestore() -> Observable<[Recipe]> {
+        
+        return Observable.create { (observer: AnyObserver<[Recipe]>) -> Disposable in
+            self.collection.order(by: "number").getDocuments() { querySnapshot, error in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    let firestoreRecipes = querySnapshot!.documents
+                        // 取得したデータを FirestoreRecipe に変換
+                        .compactMap { try? $0.data(as: FirestoreRecipe.self)  }
+                    let recipes = firestoreRecipes.map { Recipe(firestoreRecipe: $0) }
+                    print(recipes)
+                    observer.onNext(recipes)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+        
+        
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
