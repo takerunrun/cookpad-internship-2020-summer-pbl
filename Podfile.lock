@@ -1,4 +1,7 @@
 PODS:
+  - Kingfisher (5.14.1):
+    - Kingfisher/Core (= 5.14.1)
+  - Kingfisher/Core (5.14.1)
   - ReactorKit (2.1.0):
     - RxSwift (~> 5.0)
     - WeakMapTable (~> 1.1)
@@ -18,6 +21,7 @@ PODS:
   - WeakMapTable (1.1.0)
 
 DEPENDENCIES:
+  - Kingfisher (~> 5.0)
   - ReactorKit
   - ReusableKit/RxSwift
   - SnapKit (~> 5.0.0)
@@ -25,6 +29,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Kingfisher
     - ReactorKit
     - ReusableKit
     - RxCocoa
@@ -35,6 +40,7 @@ SPEC REPOS:
     - WeakMapTable
 
 SPEC CHECKSUMS:
+  Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   ReactorKit: 12a93358c554bb3f167b16b14c40374fa9cd5acd
   ReusableKit: e5f853ad4652e411f96b6119b2488afa12929be6
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
@@ -44,6 +50,6 @@ SPEC CHECKSUMS:
   Then: acfe0be7e98221c6204e12f8161459606d5d822d
   WeakMapTable: d0327eda092be6a8f7c532942ae98dc7948f5d32
 
-PODFILE CHECKSUM: bfd5aaba1fdb66138cca1deb94759bd6a2f54ff3
+PODFILE CHECKSUM: 587db78383365133356e4eddc3be4865ccdfcd25
 
 COCOAPODS: 1.9.3

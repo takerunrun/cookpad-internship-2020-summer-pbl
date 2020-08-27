@@ -10,6 +10,7 @@ target 'DailyCook' do
   pod 'Then'
   pod 'ReactorKit'
   pod 'ReusableKit/RxSwift'
+  pod 'Kingfisher', '~> 5.0'
 
   target 'DailyCookTests' do
     inherit! :search_paths
