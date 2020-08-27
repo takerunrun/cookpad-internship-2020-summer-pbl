@@ -9,6 +9,7 @@
 import UIKit
 import ReactorKit
 import ReusableKit
+import Photos
 
 final class RecipeDetailViewController: UIViewController, View, ViewConstructor {
     
@@ -57,6 +58,8 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         stackView.addArrangedSubview(header)
         stackView.setCustomSpacing(32, after: header)
         stackView.addArrangedSubview(cookedRecipeCollectionView)
+        
+        header.postImageButton.addTarget(self, action: #selector(didTapRecipeOverlay), for: .touchUpInside)
     }
     
     func setupViewConstraints() {
@@ -101,5 +104,54 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
                 }
             }
             .disposed(by: disposeBag)
+    }
+}
+
+extension RecipeDetailViewController {
+    @objc private func didTapRecipeOverlay() {
+        if PHPhotoLibrary.authorizationStatus() == .authorized {
+            showCameraRoll()
+            return
+        }
+        PHPhotoLibrary.requestAuthorization { [weak self] result in
+            DispatchQueue.main.async {
+                switch result {
+                case .authorized:
+                    self?.showCameraRoll()
+                case .denied, .restricted:
+                    let noCameraAccessAlertController = UIAlertController(title: "アクセスを許可してください。",message: nil,preferredStyle: .alert)
+                    let closeAction = UIAlertAction(title: NSLocalizedString("キャンセル", comment: ""), style: .cancel, handler: nil)
+                    noCameraAccessAlertController.addAction(closeAction)
+                    let settingsAction = UIAlertAction(title: NSLocalizedString("設定を開く", comment: ""), style: .default) { _ in
+                        let url = URL(string: UIApplication.openSettingsURLString)!
+                        UIApplication.shared.open(url)
+                    }
+                    noCameraAccessAlertController.addAction(settingsAction)
+                    self?.present(noCameraAccessAlertController, animated: true, completion: nil)
+                case .notDetermined:
+                    assertionFailure()
+                @unknown default:
+                    assertionFailure()
+                }
+            }
+        }
+
+    }
+
+    private func showCameraRoll() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+}
+
+extension RecipeDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[.originalImage] as? UIImage else {
+            return
+        }
+        let imageData = image.jpegData(compressionQuality: 0.1)
+        reactor?.action.onNext(.postImageData(imageData))
     }
 }
