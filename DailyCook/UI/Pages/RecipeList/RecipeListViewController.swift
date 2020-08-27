@@ -57,6 +57,11 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
         // Action
         
         // State
-        
+        reactor.state.map { $0.recipeCellReactors }
+            .distinctUntilChanged()
+            .bind(to: collectionView.rx.items(Reusable.recipeCell)) { _, reactor, cell in
+                cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
     }
 }
