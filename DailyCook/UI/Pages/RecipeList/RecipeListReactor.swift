@@ -13,7 +13,8 @@ final class RecipeListReactor: Reactor {
     enum Mutation {}
     
     struct State {
-        var recipeCellReactors: [RecipeListCellReactor] = []
+        // TODO: Replace initial data
+        var recipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 13).map { RecipeListCellReactor(recipe: $0) }
     }
     
     let initialState = State()
