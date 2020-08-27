@@ -47,6 +47,12 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.text = "料理のコツ"
     }
     
+    private let pointDescriptionLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 13)
+        $0.textColor = Color.textGray
+        $0.numberOfLines = 0
+    }
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -66,6 +72,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         addSubview(recipeNameLabel)
         addSubview(flagImageView)
         addSubview(pointTitleLabel)
+        addSubview(pointDescriptionLabel)
     }
     
     func setupViewConstraints() {
@@ -78,18 +85,22 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
             $0.left.right.equalToSuperview().inset(16)
         }
         recipeNameLabel.snp.makeConstraints {
-            $0.top.equalTo(recipeNumberLabel.snp.bottom).offset(24)
+            $0.top.equalTo(recipeNumberLabel.snp.bottom).offset(4)
             $0.left.equalToSuperview().inset(16)
         }
         flagImageView.snp.makeConstraints {
-            $0.top.equalTo(recipeNameLabel.snp.bottom).offset(16)
+            $0.top.equalTo(recipeNameLabel.snp.bottom).offset(32)
             $0.left.equalToSuperview().inset(16)
             $0.size.equalTo(32)
-            $0.bottom.equalToSuperview().inset(24)
         }
         pointTitleLabel.snp.makeConstraints {
             $0.centerY.equalTo(flagImageView)
             $0.left.equalTo(flagImageView.snp.right).offset(8)
+        }
+        pointDescriptionLabel.snp.makeConstraints {
+            $0.top.equalTo(flagImageView.snp.bottom).offset(8)
+            $0.left.right.equalToSuperview().inset(16)
+            $0.bottom.equalToSuperview().inset(24)
         }
     }
     
@@ -114,6 +125,11 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         reactor.state.map { $0.recipeDetail.name }
             .distinctUntilChanged()
             .bind(to: recipeNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipeDetail.point }
+            .distinctUntilChanged()
+            .bind(to: pointDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }
