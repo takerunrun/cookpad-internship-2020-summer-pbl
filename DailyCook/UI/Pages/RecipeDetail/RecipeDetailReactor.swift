@@ -24,8 +24,7 @@ final class RecipeDetailReactor: Reactor {
     
     let initialState: State
     
-    init() {
-        // TODO: Replace initial test data
-        initialState = State(recipe: TestData.recipe())
+    init(recipe: Recipe) {
+        initialState = State(recipe: recipe)
     }
 }
