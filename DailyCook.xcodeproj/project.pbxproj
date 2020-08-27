@@ -45,6 +45,7 @@
 		846A598524F77344003E3E66 /* CookedRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598424F77344003E3E66 /* CookedRecipe.swift */; };
 		846A598824F7750F003E3E66 /* RecipeDetailCookedRecipeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598724F7750F003E3E66 /* RecipeDetailCookedRecipeCell.swift */; };
 		846A598A24F77520003E3E66 /* RecipeDetailCookedRecipeReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598924F77520003E3E66 /* RecipeDetailCookedRecipeReactor.swift */; };
+		846A598D24F77FDC003E3E66 /* CookedRecipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598C24F77FDC003E3E66 /* CookedRecipeViewController.swift */; };
 		A5798277AB0E421BA5230BB1 /* Pods_DailyCook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7157C6F578BA75A500991E0 /* Pods_DailyCook.framework */; };
 /* End PBXBuildFile section */
 
@@ -113,6 +114,7 @@
 		846A598424F77344003E3E66 /* CookedRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookedRecipe.swift; sourceTree = "<group>"; };
 		846A598724F7750F003E3E66 /* RecipeDetailCookedRecipeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailCookedRecipeCell.swift; sourceTree = "<group>"; };
 		846A598924F77520003E3E66 /* RecipeDetailCookedRecipeReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailCookedRecipeReactor.swift; sourceTree = "<group>"; };
+		846A598C24F77FDC003E3E66 /* CookedRecipeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CookedRecipeViewController.swift; sourceTree = "<group>"; };
 		A7157C6F578BA75A500991E0 /* Pods_DailyCook.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyCook.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B33204B7D02D874C0B4D5D21 /* Pods-DailyCook-DailyCookUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DailyCook-DailyCookUITests.debug.xcconfig"; path = "Target Support Files/Pods-DailyCook-DailyCookUITests/Pods-DailyCook-DailyCookUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		C4D4C3B4B0A0945FA78020A3 /* Pods_DailyCook_DailyCookUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DailyCook_DailyCookUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -395,6 +397,7 @@
 		846A598B24F77ED6003E3E66 /* CookedRecipe */ = {
 			isa = PBXGroup;
 			children = (
+				846A598C24F77FDC003E3E66 /* CookedRecipeViewController.swift */,
 			);
 			path = CookedRecipe;
 			sourceTree = "<group>";
@@ -669,6 +672,7 @@
 				8410DEF224F648DF0078B5AF /* SceneDelegate.swift in Sources */,
 				846A597524F75154003E3E66 /* TestData.swift in Sources */,
 				846A597B24F75C5C003E3E66 /* RecipeDetailReactor.swift in Sources */,
+				846A598D24F77FDC003E3E66 /* CookedRecipeViewController.swift in Sources */,
 				846A598324F76F43003E3E66 /* PostImageButton.swift in Sources */,
 				846A598A24F77520003E3E66 /* RecipeDetailCookedRecipeReactor.swift in Sources */,
 				8410DF3224F655390078B5AF /* DevelopingViewController.swift in Sources */,
