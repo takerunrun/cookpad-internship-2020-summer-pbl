@@ -289,6 +289,7 @@
 		8410DF2D24F653430078B5AF /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				846A599024F78442003E3E66 /* CookedRecipe */,
 				846A597724F75C0A003E3E66 /* RecipeDetail */,
 				846A595E24F7368D003E3E66 /* RecipeList */,
 			);
@@ -401,6 +402,13 @@
 			children = (
 				846A598C24F77FDC003E3E66 /* CookedRecipeViewController.swift */,
 				846A598E24F77FEF003E3E66 /* CookedRecipeReactor.swift */,
+			);
+			path = CookedRecipe;
+			sourceTree = "<group>";
+		};
+		846A599024F78442003E3E66 /* CookedRecipe */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = CookedRecipe;
 			sourceTree = "<group>";
