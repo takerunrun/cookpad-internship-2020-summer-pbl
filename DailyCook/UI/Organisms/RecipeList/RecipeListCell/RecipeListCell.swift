@@ -38,6 +38,17 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         $0.textColor = Color.textGray
     }
     
+    private let borderView = UIView().then {
+        $0.layer.borderWidth = 4
+        $0.layer.borderColor = Color.teal.cgColor
+        $0.layer.cornerRadius = 4
+    }
+    
+    private let lockedNumberLabel = UILabel().then {
+        $0.apply(fontStyle: .bold, size: 20)
+        $0.textColor = Color.textBlack
+    }
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -55,6 +66,9 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         addSubview(imageView)
         addSubview(recipeNumberLabel)
         addSubview(recipeNameLabel)
+        
+        addSubview(borderView)
+        borderView.addSubview(lockedNumberLabel)
     }
     
     func setupViewConstraints() {
@@ -71,6 +85,14 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
             $0.left.right.equalToSuperview()
             $0.height.equalTo(16)
             $0.bottom.equalToSuperview()
+        }
+        
+        borderView.snp.makeConstraints {
+            $0.top.left.right.equalToSuperview()
+            $0.height.equalTo(Const.cellWidth)
+        }
+        lockedNumberLabel.snp.makeConstraints {
+            $0.center.equalToSuperview()
         }
     }
     
@@ -95,6 +117,22 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         reactor.state.map { $0.recipe.name }
             .distinctUntilChanged()
             .bind(to: recipeNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.number }
+            .distinctUntilChanged()
+            .map { "#\(String(format: "%03d", $0))" }
+            .bind(to: lockedNumberLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.isCooked }
+            .distinctUntilChanged()
+            .bind { [weak self] isCooked in
+                self?.borderView.isHidden = isCooked
+                self?.imageView.isHidden = !isCooked
+                self?.recipeNumberLabel.isHidden = !isCooked
+                self?.recipeNameLabel.isHidden = !isCooked
+            }
             .disposed(by: disposeBag)
     }
 }
