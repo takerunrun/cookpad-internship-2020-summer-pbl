@@ -6,4 +6,22 @@
 //  Copyright © 2020 admin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+final class RecipeListViewController: UIViewController, ViewConstructor {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        setupViews()
+        setupViewConstraints()
+    }
+    
+    func setupViews() {
+        
+    }
+    
+    func setupViewConstraints() {
+        
+    }
+}
