@@ -370,6 +370,7 @@
 		846A597024F74684003E3E66 /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				846D5D9F24F875E90047E8D8 /* DataStore */,
 				846A597124F746C9003E3E66 /* Entity */,
 			);
 			path = BusinessLogic;
@@ -437,6 +438,13 @@
 				846A599824F7A53B003E3E66 /* WebRecipeViewController.swift */,
 			);
 			path = WebRecipe;
+			sourceTree = "<group>";
+		};
+		846D5D9F24F875E90047E8D8 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataStore;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
