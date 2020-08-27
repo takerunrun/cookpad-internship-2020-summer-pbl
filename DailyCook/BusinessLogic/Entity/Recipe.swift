@@ -1,5 +1,5 @@
 //
-//  FirestoreRecipe.swift
+//  Recipe.swift
 //  DailyCook
 //
 //  Created by admin on 2020/08/27.
@@ -8,6 +8,9 @@
 
 import Foundation
 
-struct FirestoreRecipe: Equatable {
-    let uid: String
+struct Recipe: Equatable {
+    let id: String
+    let number: Int
+    let name: String
+    let imageUrl: String
 }
