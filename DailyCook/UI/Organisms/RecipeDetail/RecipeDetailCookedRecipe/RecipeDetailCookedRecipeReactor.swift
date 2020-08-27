@@ -26,3 +26,9 @@ final class RecipeDetailCookedRecipeReactor: Reactor {
         initialState = State(cookedRecipe: cookedRecipe)
     }
 }
+
+extension RecipeDetailCookedRecipeReactor: Equatable {
+    static func == (lhs: RecipeDetailCookedRecipeReactor, rhs: RecipeDetailCookedRecipeReactor) -> Bool {
+        return lhs.currentState.cookedRecipe == rhs.currentState.cookedRecipe
+    }
+}
