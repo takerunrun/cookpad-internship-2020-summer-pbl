@@ -247,6 +247,7 @@
 		8410DF2D24F653430078B5AF /* Organisms */ = {
 			isa = PBXGroup;
 			children = (
+				846A595E24F7368D003E3E66 /* RecipeList */,
 			);
 			path = Organisms;
 			sourceTree = "<group>";
@@ -282,6 +283,13 @@
 			children = (
 				846A595A24F73543003E3E66 /* RecipeListViewController.swift */,
 				846A595C24F73557003E3E66 /* RecipeListReactor.swift */,
+			);
+			path = RecipeList;
+			sourceTree = "<group>";
+		};
+		846A595E24F7368D003E3E66 /* RecipeList */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = RecipeList;
 			sourceTree = "<group>";
