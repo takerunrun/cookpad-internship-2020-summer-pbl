@@ -23,7 +23,9 @@ class TabBarController: UITabBarController {
     // MARK: - Setup Methods
     private func setupViewControllers() {
         viewControllers = [
-            RecipeListViewController(),
+            RecipeListViewController().then {
+                $0.reactor = RecipeListReactor()
+            },
             DevelopingViewController(type: "CookedRecipe"),
         ]
 
