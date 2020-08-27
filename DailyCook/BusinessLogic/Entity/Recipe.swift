@@ -20,6 +20,20 @@ struct Recipe: Equatable {
     let isSkipped: Bool
 }
 
+extension Recipe {
+    init(firestoreRecipe: FirestoreRecipe) {
+        self.id = firestoreRecipe.id ?? ""
+        self.number = firestoreRecipe.number
+        self.name = firestoreRecipe.name
+        self.imageUrl = firestoreRecipe.imageUrl
+        self.category = firestoreRecipe.category
+        self.point = firestoreRecipe.point
+        self.recipeUrl = firestoreRecipe.recipeUrl
+        self.isCooked = firestoreRecipe.cookedImageUrls.count != 0
+        self.isSkipped = firestoreRecipe.isSkipped
+    }
+}
+
 enum RecipeCategory: String {
     case main
     case side
