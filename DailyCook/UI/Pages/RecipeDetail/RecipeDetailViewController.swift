@@ -8,8 +8,13 @@
 
 import UIKit
 import ReactorKit
+import ReusableKit
 
 final class RecipeDetailViewController: UIViewController, View, ViewConstructor {
+    
+    struct Reusable {
+        static let cookedRecipeCell = ReusableCell<RecipeDetailCookedRecipeCell>()
+    }
     
     // MARK: - Variables
     var disposeBag = DisposeBag()
@@ -37,6 +42,14 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     
     private let postImageButton = PostImageButton()
     
+    private let cookedRecipeCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.itemSize = RecipeDetailCookedRecipeCell.Const.itemSize
+        $0.minimumLineSpacing = 0
+    }).then {
+        $0.register(Reusable.cookedRecipeCell)
+        $0.backgroundColor = Color.white
+    }
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,6 +69,7 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         stackView.addArrangedSubview(postImageMessageLabel)
         stackView.setCustomSpacing(8, after: postImageMessageLabel)
         stackView.addArrangedSubview(postImageButton)
+        stackView.addArrangedSubview(cookedRecipeCollectionView)
     }
     
     func setupViewConstraints() {
@@ -103,6 +117,24 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
                 }
             }
             .bind(to: postImageMessageLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.cookedRecipeReactors }
+            .distinctUntilChanged()
+            .bind(to: cookedRecipeCollectionView.rx.items(Reusable.cookedRecipeCell)) { _, reactor, cell in
+                cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.cookedRecipeReactors.count }
+        .distinctUntilChanged()
+            .bind { [weak self] count in
+                self?.cookedRecipeCollectionView.removeConstraints(self?.cookedRecipeCollectionView.constraints ?? [])
+                self?.cookedRecipeCollectionView.snp.makeConstraints {
+                    $0.width.equalTo(DeviceSize.screenWidth)
+                    $0.height.equalTo(RecipeDetailCookedRecipeCell.Const.cellHeight * CGFloat(count))
+                }
+            }
             .disposed(by: disposeBag)
     }
 }
