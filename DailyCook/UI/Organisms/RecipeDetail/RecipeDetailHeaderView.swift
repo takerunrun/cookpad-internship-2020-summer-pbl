@@ -53,7 +53,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.numberOfLines = 0
     }
     
-    private let recipeUrlButton = RecipeUrlButton()
+    let recipeUrlButton = RecipeUrlButton()
     
     private let postImageMessageLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 13)
