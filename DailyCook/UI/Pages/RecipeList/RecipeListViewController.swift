@@ -71,7 +71,7 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
             .when(.recognized)
             .bind { [weak self] _ in
                 let viewController = RecipeDetailViewController().then {
-                    $0.reactor = RecipeDetailReactor()
+                    $0.reactor = reactor.createRecipeDetailReactorFromTodaysRecipe()
                 }
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
@@ -80,7 +80,7 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RecipeDetailViewController().then {
-                    $0.reactor = RecipeDetailReactor()
+                    $0.reactor = reactor.createRecipeDetailReactor(indexPath: indexPath)
                 }
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
