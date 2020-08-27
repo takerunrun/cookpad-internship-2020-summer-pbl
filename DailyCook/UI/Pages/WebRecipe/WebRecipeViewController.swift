@@ -10,12 +10,24 @@ import WebKit
 import UIKit
 
 class WebRecipeViewController: UIViewController, ViewConstructor {
+    
+    // MARK: - Views
     let webView = WKWebView()
-    let url = URL(string: "https://mariegohan.com/2669")
+    let url: URL?
     
     private var progressView = UIProgressView(progressViewStyle: .bar)
     private var activityIndicatorView = UIActivityIndicatorView()
     
+    init(url: String) {
+        self.url = URL(string: "https://mariegohan.com/2669")
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,6 +37,7 @@ class WebRecipeViewController: UIViewController, ViewConstructor {
         setupViewConstraints()
     }
     
+    // MARK: - Setup Methods
     func setupViews() {
         view.addSubview(webView)
         if let url = url {
