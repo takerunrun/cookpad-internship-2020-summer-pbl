@@ -12,7 +12,9 @@ final class RecipeListReactor: Reactor {
     enum Action {}
     enum Mutation {}
     
-    struct State {}
+    struct State {
+        var recipeCellReactors: [RecipeListCellReactor] = []
+    }
     
     let initialState = State()
 }
