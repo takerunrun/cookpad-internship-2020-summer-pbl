@@ -16,8 +16,10 @@ struct Recipe: Equatable {
     let category: String
     let point: String
     let recipeUrl: String
+    let cookedImageUrls: [String]
     let isCooked: Bool
     let isSkipped: Bool
+    var isLocked: Bool
 }
 
 extension Recipe {
@@ -29,8 +31,10 @@ extension Recipe {
         self.category = firestoreRecipe.category
         self.point = firestoreRecipe.point
         self.recipeUrl = firestoreRecipe.recipeUrl
+        self.cookedImageUrls = firestoreRecipe.cookedImageUrls
         self.isCooked = firestoreRecipe.cookedImageUrls.count != 0
         self.isSkipped = firestoreRecipe.isSkipped
+        self.isLocked = firestoreRecipe.cookedImageUrls.count == 0
     }
 }
 
