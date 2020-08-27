@@ -13,12 +13,12 @@ final class RecipeDetailReactor: Reactor {
     enum Mutation {}
     
     struct State {
-        let recipeDetail: RecipeDetail
+        let recipe: Recipe
         // TODO: Replace initial test data
         var cookedRecipeReactors: [RecipeDetailCookedRecipeReactor] = TestData.cookedRecipes(count: 2).map { RecipeDetailCookedRecipeReactor(cookedRecipe: $0) }
         
-        init(recipeDetail: RecipeDetail) {
-            self.recipeDetail = recipeDetail
+        init(recipe: Recipe) {
+            self.recipe = recipe
         }
     }
     
@@ -26,6 +26,6 @@ final class RecipeDetailReactor: Reactor {
     
     init() {
         // TODO: Replace initial test data
-        initialState = State(recipeDetail: TestData.recipeDetail())
+        initialState = State(recipe: TestData.recipe())
     }
 }

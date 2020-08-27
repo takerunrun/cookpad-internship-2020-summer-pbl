@@ -136,30 +136,30 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         // Action
         
         // State
-        reactor.state.map { $0.recipeDetail.imageUrl }
+        reactor.state.map { $0.recipe.imageUrl }
             .distinctUntilChanged()
             .bind { [weak self] imageUrl in
                 self?.imageView.setImage(imageUrl: imageUrl)
             }
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.recipeDetail.number }
+        reactor.state.map { $0.recipe.number }
             .distinctUntilChanged()
             .map { "#\(String(format: "%03d", $0))" }
             .bind(to: recipeNumberLabel.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.recipeDetail.name }
+        reactor.state.map { $0.recipe.name }
             .distinctUntilChanged()
             .bind(to: recipeNameLabel.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.recipeDetail.point }
+        reactor.state.map { $0.recipe.point }
             .distinctUntilChanged()
             .bind(to: pointDescriptionLabel.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.recipeDetail.isCooked }
+        reactor.state.map { $0.recipe.isCooked }
             .distinctUntilChanged()
             .map { isCooked in
                 if isCooked {

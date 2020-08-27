@@ -78,7 +78,7 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         // Action
         header.recipeUrlButton.rx.tap
             .bind { [weak self] in
-                let viewController = WebRecipeViewController(url: reactor.currentState.recipeDetail.recipeUrl)
+                let viewController = WebRecipeViewController(url: reactor.currentState.recipe.recipeUrl)
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
             .disposed(by: disposeBag)
