@@ -372,9 +372,17 @@
 		846A597724F75C0A003E3E66 /* RecipeDetail */ = {
 			isa = PBXGroup;
 			children = (
+				846A598624F774E6003E3E66 /* RecipeDetailCookedRecipe */,
 				846A597E24F76121003E3E66 /* RecipeDetailHeaderView.swift */,
 			);
 			path = RecipeDetail;
+			sourceTree = "<group>";
+		};
+		846A598624F774E6003E3E66 /* RecipeDetailCookedRecipe */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = RecipeDetailCookedRecipe;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
