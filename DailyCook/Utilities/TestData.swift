@@ -41,20 +41,6 @@ struct TestData {
         )
     }
     
-    static func recipeDetail() -> RecipeDetail {
-        return RecipeDetail(
-            id: testID(),
-            number: Int.random(in: 1 ..< 100),
-            name: "やみつきキャベツ",
-            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg",
-            category: "副菜",
-            point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
-            recipeUrl: "https://mariegohan.com/2669",
-            isCooked: false,
-            isSkipped: false
-        )
-    }
-    
     static func cookedRecipe() -> CookedRecipe {
         return CookedRecipe(date: Date.init(), imageUrl: "https://www2.katagi.co.jp/recipe/.assets/%E6%98%A5%E3%82%AD%E3%83%A3%E3%83%99%E3%83%84%E3%81%AE%E3%82%84%E3%81%BF%E3%81%A4%E3%81%8D%E3%82%AD%E3%83%A3%E3%83%99%E3%83%84.jpg")
     }
