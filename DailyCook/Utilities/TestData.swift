@@ -14,7 +14,12 @@ struct TestData {
             id: testID(),
             number: Int.random(in: 1 ..< 100),
             name: "やみつきキャベツ",
-            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg"
+            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg",
+            category: "副菜",
+            point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
+            recipeUrl: "https://mariegohan.com/2669",
+            isCooked: false,
+            isSkipped: false
         )
     }
     
@@ -27,7 +32,12 @@ struct TestData {
             id: "norecipe",
             number: 0,
             name: "ちょっと待ってね",
-            imageUrl: "https://parisdayhotel.com/assets/images/noimage.png"
+            imageUrl: "https://parisdayhotel.com/assets/images/noimage.png",
+            category: "副菜",
+            point: "みそは煮立てると香りが飛んでしまうため、野菜に火が通ったのを確認してから溶き入れて、すぐに火を止めましょう。",
+            recipeUrl: "https://mariegohan.com/2669",
+            isCooked: false,
+            isSkipped: false
         )
     }
     

@@ -13,4 +13,9 @@ struct Recipe: Equatable {
     let number: Int
     let name: String
     let imageUrl: String
+    let category: String
+    let point: String
+    let recipeUrl: String
+    let isCooked: Bool
+    let isSkipped: Bool
 }
