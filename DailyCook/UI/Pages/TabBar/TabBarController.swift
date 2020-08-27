@@ -23,13 +23,15 @@ class TabBarController: UITabBarController {
     // MARK: - Setup Methods
     private func setupViewControllers() {
         viewControllers = [
-//            RecipeListViewController().then {
-//                $0.reactor = RecipeListReactor()
-//            },
-            UINavigationController(rootViewController: RecipeDetailViewController().then {
-                $0.reactor = RecipeDetailReactor()
-            }),
-            DevelopingViewController(type: "CookedRecipe"),
+            RecipeListViewController().then {
+                $0.reactor = RecipeListReactor()
+            },
+//            UINavigationController(rootViewController: RecipeDetailViewController().then {
+//                $0.reactor = RecipeDetailReactor()
+//            }),
+            CookedRecipeViewController().then {
+                $0.reactor = CookedRecipeReactor()
+            },
         ]
 
         tabBar.do {
