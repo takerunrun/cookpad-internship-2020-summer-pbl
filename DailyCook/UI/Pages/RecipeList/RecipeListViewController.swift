@@ -7,12 +7,33 @@
 //
 
 import UIKit
+import ReusableKit
+import ReactorKit
 
-final class RecipeListViewController: UIViewController, ViewConstructor {
+final class RecipeListViewController: UIViewController, View , ViewConstructor {
+    
+    struct Reusable {
+        static let recipeCell = ReusableCell<RecipeListCell>()
+    }
+    
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
     
     // MARK: - Views
     private let header = RecipeListHeaderView()
     
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.itemSize = RecipeListCell.Const.itemSize
+        $0.minimumLineSpacing = 24
+        $0.minimumInteritemSpacing = 16
+        $0.scrollDirection = .vertical
+    }).then {
+        $0.register(Reusable.recipeCell)
+        $0.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
+        $0.backgroundColor = Color.white
+    }
+    
+    // MARK: - Lify Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -20,15 +41,22 @@ final class RecipeListViewController: UIViewController, ViewConstructor {
         setupViewConstraints()
     }
     
+    // MARK: - Setup Methods
     func setupViews() {
-        view.addSubview(header)
+        view.addSubview(collectionView)
     }
     
     func setupViewConstraints() {
-        header.snp.makeConstraints {
-            $0.center.equalToSuperview()
-            $0.width.equalTo(RecipeListHeaderView.Const.width)
-            $0.height.equalTo(RecipeListHeaderView.Const.height)
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
+    }
+    
+    // MARK: - Bind Method
+    func bind(reactor: RecipeListReactor) {
+        // Action
+        
+        // State
+        
     }
 }
