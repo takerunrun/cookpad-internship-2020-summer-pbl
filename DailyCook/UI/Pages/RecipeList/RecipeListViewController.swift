@@ -9,8 +9,9 @@
 import UIKit
 import ReusableKit
 import ReactorKit
+import RxGesture
 
-final class RecipeListViewController: UIViewController, View , ViewConstructor {
+final class RecipeListViewController: UIViewController, ReactorKit.View , ViewConstructor {
     
     struct Reusable {
         static let recipeCell = ReusableCell<RecipeListCell>()
@@ -66,9 +67,18 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
         // Action
         reactor.action.onNext(.load)
         
+        header.rx.tapGesture()
+            .when(.recognized)
+            .bind { [weak self] _ in
+                let viewController = RecipeDetailViewController().then {
+                    $0.reactor = RecipeDetailReactor()
+                }
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
+        
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
-                print(indexPath)
                 let viewController = RecipeDetailViewController().then {
                     $0.reactor = RecipeDetailReactor()
                 }
