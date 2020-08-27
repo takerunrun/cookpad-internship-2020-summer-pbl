@@ -53,6 +53,15 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.numberOfLines = 0
     }
     
+    private let recipeUrlButton = RecipeUrlButton()
+    
+    private let postImageMessageLabel = UILabel().then {
+        $0.apply(fontStyle: .medium, size: 13)
+        $0.textColor = Color.textGray
+    }
+
+    private let postImageButton = PostImageButton()
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -73,6 +82,9 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         addSubview(flagImageView)
         addSubview(pointTitleLabel)
         addSubview(pointDescriptionLabel)
+        addSubview(recipeUrlButton)
+        addSubview(postImageMessageLabel)
+        addSubview(postImageButton)
     }
     
     func setupViewConstraints() {
@@ -100,6 +112,21 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         pointDescriptionLabel.snp.makeConstraints {
             $0.top.equalTo(flagImageView.snp.bottom).offset(8)
             $0.left.right.equalToSuperview().inset(16)
+        }
+        recipeUrlButton.snp.makeConstraints {
+            $0.top.equalTo(pointDescriptionLabel.snp.bottom).offset(32)
+            $0.left.right.equalToSuperview().inset(16)
+            $0.height.equalTo(32)
+        }
+        postImageMessageLabel.snp.makeConstraints {
+            $0.top.equalTo(recipeUrlButton.snp.bottom).offset(32)
+            $0.left.right.equalToSuperview().inset(16)
+            $0.height.equalTo(24)
+        }
+        postImageButton.snp.makeConstraints {
+            $0.top.equalTo(postImageMessageLabel.snp.bottom).offset(8)
+            $0.left.right.equalToSuperview().inset(16)
+            $0.height.equalTo(200)
             $0.bottom.equalToSuperview().inset(24)
         }
     }
@@ -130,6 +157,19 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         reactor.state.map { $0.recipeDetail.point }
             .distinctUntilChanged()
             .bind(to: pointDescriptionLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipeDetail.isCooked }
+            .distinctUntilChanged()
+            .map { isCooked in
+                if isCooked {
+                    return "美味しかったらまた今度作ってみよう！"
+                } else {
+                    // TODO: Replace with next recipe number
+                    return "作って写真をのせると #006 に進めるよ！"
+                }
+            }
+            .bind(to: postImageMessageLabel.rx.text)
             .disposed(by: disposeBag)
     }
 }
