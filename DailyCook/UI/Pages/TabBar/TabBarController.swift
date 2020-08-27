@@ -26,12 +26,9 @@ class TabBarController: UITabBarController {
             UINavigationController(rootViewController: RecipeListViewController().then {
                 $0.reactor = RecipeListReactor()
             }),
-//            UINavigationController(rootViewController: RecipeDetailViewController().then {
-//                $0.reactor = RecipeDetailReactor()
-//            }),
-            CookedRecipeViewController().then {
+            UINavigationController(rootViewController: CookedRecipeViewController().then {
                 $0.reactor = CookedRecipeReactor()
-            },
+            }),
         ]
 
         tabBar.do {
