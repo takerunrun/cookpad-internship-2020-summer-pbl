@@ -6,4 +6,23 @@
 //  Copyright © 2020 admin. All rights reserved.
 //
 
-import Foundation
+import ReactorKit
+
+final class RecipeDetailCookedRecipeReactor: Reactor {
+    enum Action {}
+    enum Mutation {}
+    
+    struct State {
+        let cookedRecipe: CookedRecipe
+        
+        init(cookedRecipe: CookedRecipe) {
+            self.cookedRecipe = cookedRecipe
+        }
+    }
+    
+    let initialState: State
+    
+    init(cookedRecipe: CookedRecipe) {
+        initialState = State(cookedRecipe: cookedRecipe)
+    }
+}
