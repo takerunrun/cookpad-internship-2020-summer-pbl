@@ -40,6 +40,8 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         
         setupViews()
         setupViewConstraints()
+        
+        createSeedData()
     }
     
     // MARK: - Setup Methods
@@ -93,5 +95,10 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
                 cell.reactor = reactor
             }
             .disposed(by: disposeBag)
+    }
+    
+    func createSeedData() {
+        let seedData = SeedData()
+        seedData.createRecipes()
     }
 }
