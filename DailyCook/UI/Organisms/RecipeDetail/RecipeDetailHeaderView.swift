@@ -145,7 +145,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         
         reactor.state.map { $0.recipeDetail.number }
             .distinctUntilChanged()
-            .map { "#\($0)" }
+            .map { "#\(String(format: "%03d", $0))" }
             .bind(to: recipeNumberLabel.rx.text)
             .disposed(by: disposeBag)
         

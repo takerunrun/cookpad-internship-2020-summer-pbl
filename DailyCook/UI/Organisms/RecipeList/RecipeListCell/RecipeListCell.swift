@@ -88,7 +88,7 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         
         reactor.state.map { $0.recipe.number }
             .distinctUntilChanged()
-            .map { "#\($0)" }
+            .map { "#\(String(format: "%03d", $0))" }
             .bind(to: recipeNumberLabel.rx.text)
             .disposed(by: disposeBag)
         

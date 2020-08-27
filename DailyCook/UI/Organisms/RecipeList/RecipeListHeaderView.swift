@@ -87,7 +87,7 @@ final class RecipeListHeaderView: UIView, View, ViewConstructor {
         
         // State
         reactor.state.map { $0.todaysRecipe.number }
-            .map { "#\($0)" }
+            .map { "#\(String(format: "%03d", $0))" }
             .bind(to: recipeNumberLabel.rx.text)
             .disposed(by: disposeBag)
         
