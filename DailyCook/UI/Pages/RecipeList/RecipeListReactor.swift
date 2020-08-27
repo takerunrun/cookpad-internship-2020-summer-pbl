@@ -57,7 +57,6 @@ final class RecipeListReactor: Reactor {
                         // 取得したデータを FirestoreRecipe に変換
                         .compactMap { try? $0.data(as: FirestoreRecipe.self)  }
                     let recipes = firestoreRecipes.map { Recipe(firestoreRecipe: $0) }
-                    print(recipes)
                     observer.onNext(recipes)
                 }
                 observer.onCompleted()
@@ -74,6 +73,11 @@ final class RecipeListReactor: Reactor {
         case let .setTodaysRecipe(recipe):
             state.todaysRecipe = recipe
         case let .setRecipeCellReactors(recipes):
+            var recipes = recipes
+            if let index = recipes.firstIndex { $0.isCooked == false } {
+                recipes[index].isLocked = false
+                state.todaysRecipe = recipes[index]
+            }
             state.recipeCellReactors = recipes.map { RecipeListCellReactor(recipe: $0) }
         }
         return state
