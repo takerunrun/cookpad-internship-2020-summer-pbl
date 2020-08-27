@@ -14,7 +14,6 @@ final class RecipeListReactor: Reactor {
         case load
     }
     enum Mutation {
-        case setTodaysRecipe(Recipe)
         case setRecipeCellReactors([Recipe])
     }
     
@@ -29,15 +28,8 @@ final class RecipeListReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return .merge(
-                loadTodaysRecipe().map(Mutation.setTodaysRecipe),
-                loadRecipes().map(Mutation.setRecipeCellReactors)
-            )
+            return loadRecipes().map(Mutation.setRecipeCellReactors)
         }
-    }
-    
-    private func loadTodaysRecipe() -> Observable<Recipe> {
-        return .just(TestData.recipe())
     }
     
     private func loadRecipes() -> Observable<[Recipe]> {
@@ -70,8 +62,6 @@ final class RecipeListReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setTodaysRecipe(recipe):
-            state.todaysRecipe = recipe
         case let .setRecipeCellReactors(recipes):
             var recipes = recipes
             if let index = recipes.firstIndex { $0.isCooked == false } {
