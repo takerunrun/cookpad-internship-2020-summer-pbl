@@ -32,7 +32,7 @@ final class RecipeUrlButton: UIButton, ViewConstructor {
         titleLabel?.apply(fontStyle: .bold, size: 15)
         titleLabel?.textAlignment = .center
         layer.masksToBounds = true
-        layer.cornerRadius = 4
+        layer.cornerRadius = 8
         setTitle("作り方を見る", for: .normal)
         backgroundColor = Color.teal
     }
