@@ -160,6 +160,7 @@
 		8410DEEE24F648DF0078B5AF /* DailyCook */ = {
 			isa = PBXGroup;
 			children = (
+				846A597024F74684003E3E66 /* BusinessLogic */,
 				8410DF3324F6557E0078B5AF /* Utilities */,
 				8410DF2A24F652D20078B5AF /* UI */,
 				8410DF2524F651C90078B5AF /* Extensions */,
@@ -316,6 +317,13 @@
 				846A596E24F745BE003E3E66 /* RecipeListCellReactor.swift */,
 			);
 			path = RecipeListCell;
+			sourceTree = "<group>";
+		};
+		846A597024F74684003E3E66 /* BusinessLogic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = BusinessLogic;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
