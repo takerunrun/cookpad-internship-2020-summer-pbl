@@ -19,6 +19,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     private let scrollView = UIScrollView().then {
         $0.alwaysBounceVertical = true
         $0.showsVerticalScrollIndicator = false
+        $0.contentInset.bottom = 24
     }
     
     private let stackView = UIStackView().then {
@@ -30,6 +31,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     private let mainDishView = CookedRecipeMainDishView()
     
     private let sideDishView = CookedRecipeSideDishView()
+    
+    private let soupView = CookedRecipeSoupView()
     
     // MARK: - Life Cycles
     
@@ -47,6 +50,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         stackView.addArrangedSubview(mainDishView)
         stackView.setCustomSpacing(32, after: mainDishView)
         stackView.addArrangedSubview(sideDishView)
+        stackView.setCustomSpacing(32, after: sideDishView)
+        stackView.addArrangedSubview(soupView)
     }
     
     func setupViewConstraints() {
@@ -62,6 +67,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     func bind(reactor: CookedRecipeReactor) {
         mainDishView.reactor = reactor
         sideDishView.reactor = reactor
+        soupView.reactor = reactor
         
         // Action
         
