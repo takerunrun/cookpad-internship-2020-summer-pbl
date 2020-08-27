@@ -9,5 +9,5 @@ import Foundation
 
 struct CookedRecipe: Equatable {
     let date: Date
-    let imageUrl: String
+    let imagePath: String
 }
