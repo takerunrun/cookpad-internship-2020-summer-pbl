@@ -22,6 +22,15 @@ struct TestData {
         return (0 ..< count).map { _ in recipe() }
     }
     
+    static func noRecipe() -> Recipe {
+        return Recipe(
+            id: "norecipe",
+            number: 0,
+            name: "ちょっと待ってね",
+            imageUrl: "https://parisdayhotel.com/assets/images/noimage.png"
+        )
+    }
+    
     static func recipeDetail() -> RecipeDetail {
         return RecipeDetail(
             id: testID(),
