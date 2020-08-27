@@ -73,6 +73,10 @@ final class RecipeListReactor: Reactor {
         return state
     }
     
+    func isRecipeLocked(indexPath: IndexPath) -> Bool {
+        return currentState.recipeCellReactors[indexPath.row].currentState.recipe.isLocked
+    }
+    
     func createRecipeDetailReactorFromTodaysRecipe() -> RecipeDetailReactor {
         return RecipeDetailReactor(recipe: currentState.todaysRecipe)
     }
