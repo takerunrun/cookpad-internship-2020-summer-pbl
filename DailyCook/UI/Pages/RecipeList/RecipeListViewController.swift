@@ -62,6 +62,8 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: RecipeListReactor) {
         // Action
+        reactor.action.onNext(.load)
+        
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 print(indexPath)
