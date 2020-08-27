@@ -7,13 +7,17 @@
 //
 
 import UIKit
+import ReactorKit
 
-final class RecipeListHeaderView: UIView, ViewConstructor {
+final class RecipeListHeaderView: UIView, View, ViewConstructor {
     
     struct Const {
         static let width: CGFloat = DeviceSize.screenWidth - 48
         static let height: CGFloat = width * 304 / 327
     }
+    
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
     
     // MARK: - Views
     private let todaysAssignmentLabel = UILabel().then {
@@ -44,9 +48,6 @@ final class RecipeListHeaderView: UIView, ViewConstructor {
         
         setupViews()
         setupViewConstraints()
-        
-        // TODO: Replace with Data from firestore
-        setTestData()
     }
     
     required init?(coder: NSCoder) {
@@ -81,9 +82,23 @@ final class RecipeListHeaderView: UIView, ViewConstructor {
         }
     }
     
-    func setTestData() {
-        recipeNumberLabel.text = "#005"
-        recipeNameLabel.text = "やみつきキャベツ"
-        recipeImageView.setImage(imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg")
+    func bind(reactor: RecipeListReactor) {
+        // Action
+        
+        // State
+        reactor.state.map { $0.todaysRecipe.number }
+            .map { "#\($0)" }
+            .bind(to: recipeNumberLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.todaysRecipe.name }
+            .bind(to: recipeNameLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.todaysRecipe.imageUrl }
+            .bind { [weak self] imageUrl in
+                self?.recipeImageView.setImage(imageUrl: imageUrl)
+            }
+            .disposed(by: disposeBag)
     }
 }
