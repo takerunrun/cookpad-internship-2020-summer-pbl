@@ -68,10 +68,6 @@
 		8410DF0D24F648E00078B5AF /* DailyCookUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DailyCookUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8410DF1124F648E00078B5AF /* DailyCookUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyCookUITests.swift; sourceTree = "<group>"; };
 		8410DF1324F648E00078B5AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8410DF2124F650080078B5AF /* NotoSansCJKjp-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Black.otf"; sourceTree = "<group>"; };
-		8410DF2224F650180078B5AF /* NotoSansCJKjp-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Bold.otf"; sourceTree = "<group>"; };
-		8410DF2324F6502A0078B5AF /* NotoSansCJKjp-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Medium.otf"; sourceTree = "<group>"; };
-		8410DF2424F650390078B5AF /* NotoSansCJKjp-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKjp-Regular.otf"; sourceTree = "<group>"; };
 		8410DF2624F651ED0078B5AF /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		8410DF2824F652740078B5AF /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		8410DF2F24F6537E0078B5AF /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
@@ -205,10 +201,6 @@
 		8410DF2024F64F9F0078B5AF /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				8410DF2124F650080078B5AF /* NotoSansCJKjp-Black.otf */,
-				8410DF2224F650180078B5AF /* NotoSansCJKjp-Bold.otf */,
-				8410DF2324F6502A0078B5AF /* NotoSansCJKjp-Medium.otf */,
-				8410DF2424F650390078B5AF /* NotoSansCJKjp-Regular.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
