@@ -43,6 +43,7 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         view.addSubview(contentScrollView)
         contentScrollView.addSubview(stackView)
         stackView.addArrangedSubview(header)
+        stackView.setCustomSpacing(32, after: header)
         stackView.addArrangedSubview(recipeUrlButton)
     }
     
