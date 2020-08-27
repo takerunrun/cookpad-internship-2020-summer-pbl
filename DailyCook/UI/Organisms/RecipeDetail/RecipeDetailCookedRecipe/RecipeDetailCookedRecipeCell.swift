@@ -8,6 +8,8 @@
 
 import UIKit
 import ReactorKit
+import FirebaseUI
+import Firebase
 
 final class RecipeDetailCookedRecipeCell: UICollectionViewCell, View, ViewConstructor {
     
@@ -77,10 +79,12 @@ final class RecipeDetailCookedRecipeCell: UICollectionViewCell, View, ViewConstr
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
         
-        reactor.state.map { $0.cookedRecipe.imageUrl }
+        reactor.state.map { $0.cookedRecipe.imagePath }
             .distinctUntilChanged()
-            .bind { [weak self] imageUrl in
-                self?.imageView.setImage(imageUrl: imageUrl)
+            .bind { [weak self] imagePath in
+                let placeholderImage = #imageLiteral(resourceName: "noimage")
+                let ref = Storage.storage().reference(withPath: imagePath)
+                self?.imageView.sd_setImage(with: ref, placeholderImage: placeholderImage)
             }
             .disposed(by: disposeBag)
     }
