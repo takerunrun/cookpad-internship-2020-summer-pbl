@@ -70,6 +70,15 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         soupView.reactor = reactor
         
         // Action
+        mainDishView.collectionView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                print(indexPath)
+                let viewController = RecipeDetailViewController().then {
+                    $0.reactor = RecipeDetailReactor()
+                }
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
         
         // State
     }
