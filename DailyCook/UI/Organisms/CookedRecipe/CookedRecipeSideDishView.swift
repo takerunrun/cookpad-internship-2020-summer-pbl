@@ -13,10 +13,12 @@ import ReactorKit
 final class CookedRecipeSideDishView: UIView, View, ViewConstructor {
     
     private struct Const {
-        static let height: CGFloat = 56 + RecipeListCell.Const.cellHeight
+        static let collectionViewHeight: CGFloat = RecipeListCell.Const.cellHeight * 2 + Const.minimumInteritemSpacing
+        static let height: CGFloat = 56 + collectionViewHeight
         static let width: CGFloat = DeviceSize.screenWidth
         static let collectionViewContentInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
         static let minimumLineSpacing: CGFloat = 12
+        static let minimumInteritemSpacing: CGFloat = 24
         static let itemSize: CGSize = RecipeListCell.Const.itemSize
     }
     
@@ -49,6 +51,7 @@ final class CookedRecipeSideDishView: UIView, View, ViewConstructor {
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = Const.itemSize
         $0.minimumLineSpacing = Const.minimumLineSpacing
+        $0.minimumInteritemSpacing = Const.minimumInteritemSpacing
         $0.scrollDirection = .horizontal
     }).then {
         $0.register(Reusable.recipeCell)
@@ -87,7 +90,7 @@ final class CookedRecipeSideDishView: UIView, View, ViewConstructor {
         }
         collectionView.snp.makeConstraints {
             $0.left.right.bottom.equalToSuperview()
-            $0.height.equalTo(RecipeListCell.Const.cellHeight)
+            $0.height.equalTo(Const.collectionViewHeight)
         }
     }
     
