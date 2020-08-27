@@ -29,7 +29,7 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
         $0.scrollDirection = .vertical
     }).then {
         $0.register(Reusable.recipeCell)
-        $0.contentInset = UIEdgeInsets(top: RecipeListHeaderView.Const.height + 80, left: 24, bottom: 24, right: 24)
+        $0.contentInset = UIEdgeInsets(top: RecipeListHeaderView.Const.height + 120, left: 24, bottom: 24, right: 24)
         $0.backgroundColor = Color.white
     }
     
@@ -49,7 +49,7 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
     
     func setupViewConstraints() {
         header.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(-(RecipeListHeaderView.Const.height + 24))
+            $0.top.equalToSuperview().offset(-(RecipeListHeaderView.Const.height + 60))
             $0.left.equalToSuperview()
             $0.width.equalTo(RecipeListHeaderView.Const.width)
             $0.height.equalTo(RecipeListHeaderView.Const.height)
