@@ -896,6 +896,7 @@
 				DEVELOPMENT_TEAM = MYUAB72A7J;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DailyCook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -917,6 +918,7 @@
 				DEVELOPMENT_TEAM = MYUAB72A7J;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = DailyCook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
