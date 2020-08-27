@@ -20,6 +20,10 @@ final class RecipeDetailCookedRecipeCell: UICollectionViewCell, View, ViewConstr
     // MARK: - Variables
     var disposeBag = DisposeBag()
     
+    static let formatter = DateFormatter().then {
+        $0.dateFormat = "yyyy年MM月dd日"
+    }
+    
     // MARK: - Views
     private let dateLabel = UILabel().then {
         $0.apply(fontStyle: .medium, size: 14)
@@ -69,7 +73,7 @@ final class RecipeDetailCookedRecipeCell: UICollectionViewCell, View, ViewConstr
         // State
         reactor.state.map { $0.cookedRecipe.date }
             .distinctUntilChanged()
-            .map { "\($0)" }
+            .map { Self.formatter.string(from: $0) }
             .bind(to: dateLabel.rx.text)
             .disposed(by: disposeBag)
         
