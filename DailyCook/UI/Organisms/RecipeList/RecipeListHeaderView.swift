@@ -10,6 +10,10 @@ import UIKit
 
 final class RecipeListHeaderView: UIView, ViewConstructor {
     
+    struct Const {
+        static let width: CGFloat = DeviceSize.screenWidth - 48
+        static let height: CGFloat = width * 304 / 327
+    }
     
     // MARK: - Views
     private let todaysAssignmentLabel = UILabel().then {
