@@ -30,6 +30,8 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     
     private let recipeUrlButton = RecipeUrlButton()
     
+    private let postImageButton = PostImageButton()
+    
     // MARK: - Life Cycles
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,6 +47,8 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         stackView.addArrangedSubview(header)
         stackView.setCustomSpacing(32, after: header)
         stackView.addArrangedSubview(recipeUrlButton)
+        stackView.setCustomSpacing(60, after: recipeUrlButton)
+        stackView.addArrangedSubview(postImageButton)
     }
     
     func setupViewConstraints() {
@@ -59,6 +63,11 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         }
         recipeUrlButton.snp.makeConstraints {
             $0.height.equalTo(36)
+            $0.width.equalTo(DeviceSize.screenWidth - 32)
+            $0.left.right.equalToSuperview().inset(16)
+        }
+        postImageButton.snp.makeConstraints {
+            $0.height.equalTo(200)
             $0.width.equalTo(DeviceSize.screenWidth - 32)
             $0.left.right.equalToSuperview().inset(16)
         }
