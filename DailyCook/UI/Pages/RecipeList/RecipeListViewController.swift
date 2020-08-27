@@ -41,7 +41,7 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         setupViews()
         setupViewConstraints()
         
-        createSeedData()
+//        createSeedData()
     }
     
     // MARK: - Setup Methods
