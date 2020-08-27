@@ -40,6 +40,9 @@ final class RecipeListHeaderView: UIView, ViewConstructor {
         
         setupViews()
         setupViewConstraints()
+        
+        // TODO: Replace with Data from firestore
+        setTestData()
     }
     
     required init?(coder: NSCoder) {
@@ -72,5 +75,11 @@ final class RecipeListHeaderView: UIView, ViewConstructor {
             $0.top.equalTo(recipeNameLabel.snp.bottom).offset(8)
             $0.right.left.bottom.equalToSuperview()
         }
+    }
+    
+    func setTestData() {
+        recipeNumberLabel.text = "#005"
+        recipeNameLabel.text = "やみつきキャベツ"
+        recipeImageView.setImage(imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/06/IMG_3529-768x512.jpg")
     }
 }
