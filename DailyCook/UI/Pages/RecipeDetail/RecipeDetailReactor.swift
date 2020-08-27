@@ -12,7 +12,9 @@ final class RecipeDetailReactor: Reactor {
     enum Action {
         case postImageData(Data?)
     }
-    enum Mutation {}
+    enum Mutation {
+        case addCookedRecipe(CookedRecipe)
+    }
     
     struct State {
         let recipe: Recipe
@@ -33,7 +35,22 @@ final class RecipeDetailReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case let .postImageData(imageData):
-            return .empty()
+            guard let imageData = imageData else { return .empty() }
+            return createCookedRecipe(imageData: imageData).map(Mutation.addCookedRecipe)
         }
+    }
+    
+    private func createCookedRecipe(imageData: Data) -> Observable<CookedRecipe> {
+        let imageDataStore = ImageDataStore()
+        return imageDataStore.createCookedRecipe(imageData: imageData)
+    }
+    
+    func reduce(state: State, mutation: Mutation) -> State {
+        var state = state
+        switch mutation {
+        case let .addCookedRecipe(cookedRecipe):
+            state.cookedRecipeReactors.append(RecipeDetailCookedRecipeReactor(cookedRecipe: cookedRecipe))
+        }
+        return state
     }
 }
