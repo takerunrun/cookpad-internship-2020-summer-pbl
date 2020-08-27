@@ -81,6 +81,9 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         
         collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
+                if reactor.isRecipeLocked(indexPath: indexPath) {
+                    return
+                }
                 let viewController = RecipeDetailViewController().then {
                     $0.reactor = reactor.createRecipeDetailReactor(indexPath: indexPath)
                 }
