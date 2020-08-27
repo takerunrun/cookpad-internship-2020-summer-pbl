@@ -76,6 +76,12 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         header.reactor = reactor
         
         // Action
+        header.recipeUrlButton.rx.tap
+            .bind { [weak self] in
+                let viewController = WebRecipeViewController(url: reactor.currentState.recipeDetail.recipeUrl)
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
         
         // State
         reactor.state.map { $0.cookedRecipeReactors }
