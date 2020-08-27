@@ -6,4 +6,76 @@
 //  Copyright © 2020 admin. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import ReusableKit
+import ReactorKit
+
+final class CookedRecipeMainDishView: UIView, View, ViewConstructor {
+    
+    private struct Const {
+        static let height: CGFloat = RecipeListCell.Const.cellHeight
+        static let width: CGFloat = DeviceSize.screenWidth
+        static let collectionViewContentInset: UIEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+        static let minimumLineSpacing: CGFloat = 12
+        static let itemSize: CGSize = RecipeListCell.Const.itemSize
+    }
+    
+    struct Reusable {
+        static let recipeCell = ReusableCell<RecipeListCell>()
+    }
+    
+    // MARK: - Variables
+    var disposeBag = DisposeBag()
+    
+    override var intrinsicContentSize: CGSize {
+        return CGSize(width: Const.width, height: Const.height)
+    }
+    
+    // MARK: - Views
+    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+        $0.itemSize = Const.itemSize
+        $0.minimumLineSpacing = Const.minimumLineSpacing
+        $0.scrollDirection = .horizontal
+    }).then {
+        $0.register(Reusable.recipeCell)
+        $0.contentInset = Const.collectionViewContentInset
+        $0.backgroundColor = Color.white
+        $0.showsHorizontalScrollIndicator = false
+    }
+    
+    // MARK: - Initializers
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+        
+        setupViews()
+        setupViewConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    // MARK: - Setup Methods
+    func setupViews() {
+        addSubview(collectionView)
+    }
+    
+    func setupViewConstraints() {
+        collectionView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+    }
+    
+    // MARK: - Bind Method
+    func bind(reactor: CookedRecipeReactor) {
+        // Action
+        
+        // State
+        reactor.state.map { $0.mainDishRecipeCellReactors }
+            .distinctUntilChanged()
+            .bind(to: collectionView.rx.items(Reusable.recipeCell)) { _, reactor, cell in
+                cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+    }
+}
