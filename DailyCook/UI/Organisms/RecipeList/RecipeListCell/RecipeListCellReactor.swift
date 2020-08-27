@@ -26,3 +26,9 @@ final class RecipeListCellReactor: Reactor {
         initialState = State(recipe: recipe)
     }
 }
+
+extension RecipeListCellReactor: Equatable {
+    static func == (lhs: RecipeListCellReactor, rhs: RecipeListCellReactor) -> Bool {
+        return lhs.currentState.recipe.id == rhs.currentState.recipe.id
+    }
+}
