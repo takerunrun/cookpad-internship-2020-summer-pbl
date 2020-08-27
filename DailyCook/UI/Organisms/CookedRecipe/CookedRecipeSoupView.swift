@@ -46,7 +46,7 @@ final class CookedRecipeSoupView: UIView, View, ViewConstructor {
         $0.titleEdgeInsets.bottom = 0
     }
     
-    private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout().then {
         $0.itemSize = Const.itemSize
         $0.minimumLineSpacing = Const.minimumLineSpacing
         $0.scrollDirection = .horizontal
