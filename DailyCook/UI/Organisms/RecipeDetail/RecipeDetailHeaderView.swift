@@ -60,7 +60,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.textColor = Color.textGray
     }
 
-    private let postImageButton = PostImageButton()
+    let postImageButton = PostImageButton()
     
     // MARK: - Initializers
     override init(frame: CGRect) {
