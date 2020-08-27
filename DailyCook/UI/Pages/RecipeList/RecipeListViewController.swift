@@ -62,6 +62,15 @@ final class RecipeListViewController: UIViewController, View , ViewConstructor {
     // MARK: - Bind Method
     func bind(reactor: RecipeListReactor) {
         // Action
+        collectionView.rx.itemSelected
+            .bind { [weak self] indexPath in
+                print(indexPath)
+                let viewController = RecipeDetailViewController().then {
+                    $0.reactor = RecipeDetailReactor()
+                }
+                self?.navigationController?.pushViewController(viewController, animated: true)
+            }
+            .disposed(by: disposeBag)
         
         // State
         reactor.state.map { $0.recipeCellReactors }
