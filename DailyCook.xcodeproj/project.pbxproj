@@ -38,7 +38,6 @@
 		846A597524F75154003E3E66 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A597424F75154003E3E66 /* TestData.swift */; };
 		846A597924F75C3C003E3E66 /* RecipeDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A597824F75C3C003E3E66 /* RecipeDetailViewController.swift */; };
 		846A597B24F75C5C003E3E66 /* RecipeDetailReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A597A24F75C5C003E3E66 /* RecipeDetailReactor.swift */; };
-		846A597D24F75CFC003E3E66 /* RecipeDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A597C24F75CFC003E3E66 /* RecipeDetail.swift */; };
 		846A597F24F76121003E3E66 /* RecipeDetailHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A597E24F76121003E3E66 /* RecipeDetailHeaderView.swift */; };
 		846A598124F76B92003E3E66 /* RecipeUrlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598024F76B92003E3E66 /* RecipeUrlButton.swift */; };
 		846A598324F76F43003E3E66 /* PostImageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 846A598224F76F43003E3E66 /* PostImageButton.swift */; };
@@ -113,7 +112,6 @@
 		846A597424F75154003E3E66 /* TestData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		846A597824F75C3C003E3E66 /* RecipeDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailViewController.swift; sourceTree = "<group>"; };
 		846A597A24F75C5C003E3E66 /* RecipeDetailReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailReactor.swift; sourceTree = "<group>"; };
-		846A597C24F75CFC003E3E66 /* RecipeDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetail.swift; sourceTree = "<group>"; };
 		846A597E24F76121003E3E66 /* RecipeDetailHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeDetailHeaderView.swift; sourceTree = "<group>"; };
 		846A598024F76B92003E3E66 /* RecipeUrlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeUrlButton.swift; sourceTree = "<group>"; };
 		846A598224F76F43003E3E66 /* PostImageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostImageButton.swift; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				846A597224F746DF003E3E66 /* Recipe.swift */,
-				846A597C24F75CFC003E3E66 /* RecipeDetail.swift */,
 				846A598424F77344003E3E66 /* CookedRecipe.swift */,
 			);
 			path = Entity;
@@ -694,7 +691,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8410DF3724F656050078B5AF /* ViewConstructor.swift in Sources */,
-				846A597D24F75CFC003E3E66 /* RecipeDetail.swift in Sources */,
 				846A596224F73B7D003E3E66 /* UIImage+Extension.swift in Sources */,
 				846A598F24F77FEF003E3E66 /* CookedRecipeReactor.swift in Sources */,
 				846A599624F78D83003E3E66 /* CookedRecipeSoupView.swift in Sources */,
