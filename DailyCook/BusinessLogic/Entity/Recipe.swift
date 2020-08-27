@@ -19,3 +19,9 @@ struct Recipe: Equatable {
     let isCooked: Bool
     let isSkipped: Bool
 }
+
+enum RecipeCategory: String {
+    case main
+    case side
+    case soup
+}
