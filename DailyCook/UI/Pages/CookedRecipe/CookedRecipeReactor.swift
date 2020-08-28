@@ -13,29 +13,33 @@ final class CookedRecipeReactor: Reactor {
         case load
     }
     enum Mutation {
-        case setMainDish([Recipe])
-        case setSideDish([Recipe])
-        case setSoup([Recipe])
+        case setDish(([Recipe], [Recipe], [Recipe]))
     }
     
     struct State {
         // TODO: Replace initial test data
-        var mainDishRecipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 5).map { RecipeListCellReactor(recipe: $0) }
-        var sideDishRecipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 5).map { RecipeListCellReactor(recipe: $0) }
-        var soupRecipeCellReactors: [RecipeListCellReactor] = TestData.recipes(count: 5).map { RecipeListCellReactor(recipe: $0) }
+        var mainDishRecipeCellReactors: [RecipeListCellReactor] = []
+        var sideDishRecipeCellReactors: [RecipeListCellReactor] = []
+        var soupRecipeCellReactors: [RecipeListCellReactor] = []
     }
     
     let initialState = State()
+    private let recipeDataStore = RecipeDataStore()
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .load:
-            return .empty()
+            return loadCookedRecipes().map(Mutation.setDish)
         }
     }
     
     private func loadCookedRecipes() -> Observable<([Recipe], [Recipe], [Recipe])> {
-        return .empty()
+        return recipeDataStore.fetchAllRecipes().map { recipes in
+            let main = recipes.filter { $0.category == RecipeCategory.main.rawValue }
+            let side = recipes.filter { $0.category == RecipeCategory.side.rawValue }
+            let soup = recipes.filter { $0.category == RecipeCategory.soup.rawValue }
+            return (main, side, soup)
+        }
     }
     
     
@@ -43,12 +47,10 @@ final class CookedRecipeReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
-        case let .setMainDish(recipes):
-            state.mainDishRecipeCellReactors = recipes.map { RecipeListCellReactor(recipe: $0) }
-        case let .setSideDish(recipes):
-            state.sideDishRecipeCellReactors = recipes.map { RecipeListCellReactor(recipe: $0) }
-        case let .setSoup(recipes):
-            state.soupRecipeCellReactors = recipes.map { RecipeListCellReactor(recipe: $0) }
+        case let .setDish((mainRecipes, sideRecipes, soupRecies)):
+            state.mainDishRecipeCellReactors = mainRecipes.map { RecipeListCellReactor(recipe: $0) }
+            state.sideDishRecipeCellReactors = sideRecipes.map { RecipeListCellReactor(recipe: $0) }
+            state.soupRecipeCellReactors = soupRecies.map { RecipeListCellReactor(recipe: $0) }
         }
         return state
         
