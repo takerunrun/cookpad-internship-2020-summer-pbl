@@ -67,4 +67,10 @@ struct RecipeDataStore {
             return Disposables.create()
         }
     }
+    
+    func updateRecipeIsSkipped(id: String, isSkipped: Bool) {
+        collection.document(id).updateData([
+            "isSkipped": isSkipped
+        ])
+    }
 }
