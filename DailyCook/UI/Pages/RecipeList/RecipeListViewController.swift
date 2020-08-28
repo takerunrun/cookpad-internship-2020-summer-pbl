@@ -81,7 +81,6 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         
         refreshControl.rx.controlEvent(.valueChanged)
             .bind { _ in
-                print("valueChanged")
                 reactor.action.onNext(.refresh)
             }
             .disposed(by: disposeBag)
