@@ -18,7 +18,6 @@ final class RecipeDetailReactor: Reactor {
     
     struct State {
         let recipe: Recipe
-        // TODO: Replace initial test data
         var cookedRecipeReactors: [RecipeDetailCookedRecipeReactor]
         
         init(recipe: Recipe) {
