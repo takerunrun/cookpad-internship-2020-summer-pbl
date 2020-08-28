@@ -24,6 +24,10 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.layer.masksToBounds = true
     }
     
+    private let grayOverView = UIView().then {
+        $0.backgroundColor = Color.textGray.withAlphaComponent(0.7)
+    }
+    
     private let recipeNumberLabel = UILabel().then {
         $0.apply(fontStyle: .black, size: 24)
         $0.textColor = Color.textBlack
@@ -77,6 +81,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
     // MARK: - Setup Methods
     func setupViews() {
         addSubview(imageView)
+        imageView.addSubview(grayOverView)
         addSubview(recipeNumberLabel)
         addSubview(recipeNameLabel)
         addSubview(flagImageView)
@@ -91,6 +96,9 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         imageView.snp.makeConstraints {
             $0.top.left.right.equalToSuperview()
             $0.height.equalTo(Const.imageViewHeight)
+        }
+        grayOverView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
         recipeNumberLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
@@ -141,6 +149,12 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
             .bind { [weak self] imageUrl in
                 self?.imageView.setImage(imageUrl: imageUrl)
             }
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.isSkipped }
+            .distinctUntilChanged()
+            .map { !$0 }
+            .bind(to: grayOverView.rx.isHidden)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.recipe.number }
