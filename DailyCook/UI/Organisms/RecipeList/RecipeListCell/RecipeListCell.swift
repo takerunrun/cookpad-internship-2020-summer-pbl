@@ -49,6 +49,10 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         $0.textColor = Color.textBlack
     }
     
+    private let grayOverView = UIView().then {
+        $0.backgroundColor = Color.textGray.withAlphaComponent(0.7)
+    }
+    
     // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -69,6 +73,8 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         
         addSubview(borderView)
         borderView.addSubview(lockedNumberLabel)
+        
+        imageView.addSubview(grayOverView)
     }
     
     func setupViewConstraints() {
@@ -93,6 +99,10 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
         }
         lockedNumberLabel.snp.makeConstraints {
             $0.center.equalToSuperview()
+        }
+        
+        grayOverView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
         }
     }
     
@@ -133,6 +143,12 @@ final class RecipeListCell: UICollectionViewCell, View, ViewConstructor {
                 self?.recipeNumberLabel.isHidden = isLocked
                 self?.recipeNameLabel.isHidden = isLocked
             }
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.isSkipped }
+            .distinctUntilChanged()
+            .map { !$0 }
+            .bind(to: grayOverView.rx.isHidden)
             .disposed(by: disposeBag)
     }
 }
