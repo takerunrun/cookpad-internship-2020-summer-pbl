@@ -10,14 +10,16 @@ import ReactorKit
 
 final class RecipeDetailReactor: Reactor {
     enum Action {
+        case skip
         case postImageData(Data?)
     }
     enum Mutation {
+        case setIsSkipped
         case addCookedRecipe(CookedRecipe)
     }
     
     struct State {
-        let recipe: Recipe
+        var recipe: Recipe
         var cookedRecipeReactors: [RecipeDetailCookedRecipeReactor]
         
         init(recipe: Recipe) {
@@ -37,6 +39,8 @@ final class RecipeDetailReactor: Reactor {
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
+        case .skip:
+            return .just(.setIsSkipped)
         case let .postImageData(imageData):
             guard let imageData = imageData else { return .empty() }
             return createCookedRecipe(imageData: imageData)
@@ -58,6 +62,8 @@ final class RecipeDetailReactor: Reactor {
     func reduce(state: State, mutation: Mutation) -> State {
         var state = state
         switch mutation {
+        case .setIsSkipped:
+            state.recipe.isSkipped = !state.recipe.isSkipped
         case let .addCookedRecipe(cookedRecipe):
             state.cookedRecipeReactors.append(RecipeDetailCookedRecipeReactor(cookedRecipe: cookedRecipe))
         }
