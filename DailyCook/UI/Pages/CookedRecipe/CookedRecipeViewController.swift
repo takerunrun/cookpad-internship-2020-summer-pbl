@@ -70,6 +70,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         soupView.reactor = reactor
         
         // Action
+        reactor.action.onNext(.load)
+        
         mainDishView.collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
                 let viewController = RecipeDetailViewController().then {
