@@ -16,6 +16,24 @@ struct RecipeDataStore {
     init(db: Firestore = Firestore.firestore()) {
         self.collection = db.collection("recipes")
     }
+    
+    func fetchAllRecipes() -> Observable<[Recipe]> {
+        return Observable.create { (observer: AnyObserver<[Recipe]>) -> Disposable in
+            self.collection.order(by: "number").getDocuments() { querySnapshot, error in
+                if let error = error {
+                    observer.onError(error)
+                } else {
+                    let firestoreRecipes = querySnapshot!.documents
+                        // 取得したデータを FirestoreRecipe に変換
+                        .compactMap { try? $0.data(as: FirestoreRecipe.self)  }
+                    let recipes = firestoreRecipes.map { Recipe(firestoreRecipe: $0) }
+                    observer.onNext(recipes)
+                }
+                observer.onCompleted()
+            }
+            return Disposables.create()
+        }
+    }
 
     func updateRecipeWithCookedImageUrls(recipe: Recipe) -> Observable<Recipe> {
         return Observable.create { (observer: AnyObserver<Recipe>) -> Disposable in
