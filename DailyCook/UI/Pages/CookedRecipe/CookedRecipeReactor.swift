@@ -35,9 +35,15 @@ final class CookedRecipeReactor: Reactor {
     
     private func loadCookedRecipes() -> Observable<([Recipe], [Recipe], [Recipe])> {
         return recipeDataStore.fetchAllRecipes().map { recipes in
-            let main = recipes.filter { $0.category == RecipeCategory.main.rawValue }
-            let side = recipes.filter { $0.category == RecipeCategory.side.rawValue }
-            let soup = recipes.filter { $0.category == RecipeCategory.soup.rawValue }
+            let main = recipes
+                .filter { $0.category == RecipeCategory.main.rawValue }
+                .filter { $0.cookedImageUrls.count > 0 }
+            let side = recipes
+                .filter { $0.category == RecipeCategory.side.rawValue }
+                .filter { $0.cookedImageUrls.count > 0 }
+            let soup = recipes
+                .filter { $0.category == RecipeCategory.soup.rawValue }
+                .filter { $0.cookedImageUrls.count > 0 }
             return (main, side, soup)
         }
     }
