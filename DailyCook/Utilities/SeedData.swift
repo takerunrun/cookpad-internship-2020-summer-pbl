@@ -16,7 +16,7 @@ struct SeedData {
         self.collection = db.collection("recipes")
     }
     
-    func createRecipe(name: String, number: Int, imageUrl: String, category: RecipeCategory, point: String, recipeUrl: String, cookedImageUrls: [String] = []) {
+    func createRecipe(name: String, number: Int, imageUrl: String, category: RecipeCategory, point: String, recipeUrl: String, cookedImageUrls: [String] = [], isSkipped: Bool = false) {
         let firestoreRecipe = FirestoreRecipe(
             id: "\(number)",
             name: name,
@@ -25,7 +25,7 @@ struct SeedData {
             category: category.rawValue,
             point: point,
             recipeUrl: recipeUrl,
-            isSkipped: false,
+            isSkipped: isSkipped,
             cookedImageUrls: cookedImageUrls
         )
         _ = try! collection.addDocument(from: firestoreRecipe) { error in
@@ -102,7 +102,8 @@ struct SeedData {
             recipeUrl: "https://mariegohan.com/5542",
             cookedImageUrls: [
                 "CABE30EB-B8D1-431C-994E-D5DDB9ACD767.jpg"
-            ]
+            ],
+            isSkipped: true
         )
         createRecipe(
             name: "豚バラ白菜のうま煮",
