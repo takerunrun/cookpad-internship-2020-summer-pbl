@@ -12,7 +12,7 @@ struct Recipe: Equatable {
     let id: String
     let number: Int
     let name: String
-    let imageUrl: String
+    var imageUrl: String
     let category: String
     let point: String
     let recipeUrl: String
