@@ -44,7 +44,7 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         setupViews()
         setupViewConstraints()
         
-        createSeedData()
+//        createSeedData()
     }
     
     // MARK: - Setup Methods
@@ -73,6 +73,13 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         // Action
         reactor.action.onNext(.load)
         
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind { _ in
+                print("valueChanged")
+                reactor.action.onNext(.refresh)
+            }
+            .disposed(by: disposeBag)
+        
         header.rx.tapGesture()
             .when(.recognized)
             .bind { [weak self] _ in
@@ -100,6 +107,14 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
             .distinctUntilChanged()
             .bind(to: collectionView.rx.items(Reusable.recipeCell)) { _, reactor, cell in
                 cell.reactor = reactor
+            }
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .filter { !$0 }
+            .bind { [weak self] _ in
+                self?.refreshControl.endRefreshing()
             }
             .disposed(by: disposeBag)
     }
