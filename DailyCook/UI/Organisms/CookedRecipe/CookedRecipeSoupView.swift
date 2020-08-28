@@ -55,6 +55,7 @@ final class CookedRecipeSoupView: UIView, View, ViewConstructor {
         $0.contentInset = Const.collectionViewContentInset
         $0.backgroundColor = Color.white
         $0.showsHorizontalScrollIndicator = false
+        $0.alwaysBounceHorizontal = true
     }
     
     // MARK: - Initializers
