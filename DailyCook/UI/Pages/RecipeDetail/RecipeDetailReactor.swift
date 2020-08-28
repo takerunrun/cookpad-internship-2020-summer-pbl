@@ -32,6 +32,7 @@ final class RecipeDetailReactor: Reactor {
     }
     
     let initialState: State
+    private let recipeDataStore = RecipeDataStore()
     
     init(recipe: Recipe) {
         initialState = State(recipe: recipe)
@@ -40,6 +41,7 @@ final class RecipeDetailReactor: Reactor {
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .skip:
+            updateIsSkipped(isSkipped: !currentState.recipe.isSkipped)
             return .just(.setIsSkipped)
         case let .postImageData(imageData):
             guard let imageData = imageData else { return .empty() }
@@ -47,6 +49,10 @@ final class RecipeDetailReactor: Reactor {
                 .flatMap(updateRecipe)
                 .map(Mutation.addCookedRecipe)
         }
+    }
+    
+    private func updateIsSkipped(isSkipped: Bool) {
+        recipeDataStore.updateRecipeIsSkipped(id: currentState.recipe.id, isSkipped: isSkipped)
     }
     
     private func createCookedRecipe(imageData: Data) -> Observable<CookedRecipe> {
