@@ -9,6 +9,8 @@
 import UIKit
 import ReactorKit
 import RxCocoa
+import FirebaseUI
+import Firebase
 
 final class CookedRecipeListCell: UICollectionViewCell, View, ViewConstructor {
     
@@ -111,12 +113,15 @@ final class CookedRecipeListCell: UICollectionViewCell, View, ViewConstructor {
         // Action
         
         // State
-        reactor.state.map { $0.recipe.imageUrl }
-            .distinctUntilChanged()
-            .bind { [weak self] imageUrl in
-                self?.imageView.setImage(imageUrl: imageUrl)
-            }
-            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.cookedImageUrls[0] }
+        .distinctUntilChanged()
+        .bind { [weak self] imageUrl in
+            let placeholderImage = #imageLiteral(resourceName: "noimage")
+            let ref = Storage.storage().reference(withPath: imageUrl)
+            self?.imageView.sd_setImage(with: ref, placeholderImage: placeholderImage)
+        }
+        .disposed(by: disposeBag)
         
         reactor.state.map { $0.recipe.number }
             .distinctUntilChanged()
