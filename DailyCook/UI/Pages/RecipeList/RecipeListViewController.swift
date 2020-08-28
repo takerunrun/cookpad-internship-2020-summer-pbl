@@ -47,6 +47,12 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
 //        createSeedData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reactor?.action.onNext(.refresh)
+    }
+    
     // MARK: - Setup Methods
     func setupViews() {
         collectionView.addSubview(header)
