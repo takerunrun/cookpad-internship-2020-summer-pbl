@@ -85,6 +85,12 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
         header.reactor = reactor
         
         // Action
+        skipButton.rx.tap
+            .bind { _ in
+                reactor.action.onNext(.skip)
+            }
+            .disposed(by: disposeBag)
+        
         header.recipeUrlButton.rx.tap
             .bind { [weak self] in
                 let viewController = WebRecipeViewController(url: reactor.currentState.recipe.recipeUrl)
@@ -93,6 +99,11 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
             .disposed(by: disposeBag)
         
         // State
+        reactor.state.map { $0.recipe.isSkipped }
+            .distinctUntilChanged()
+            .bind(to: skipButton.rx.isSkipped)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.cookedRecipeReactors }
             .distinctUntilChanged()
             .bind(to: cookedRecipeCollectionView.rx.items(Reusable.cookedRecipeCell)) { _, reactor, cell in
