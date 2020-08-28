@@ -36,13 +36,20 @@ final class RecipeDetailReactor: Reactor {
         switch action {
         case let .postImageData(imageData):
             guard let imageData = imageData else { return .empty() }
-            return createCookedRecipe(imageData: imageData).map(Mutation.addCookedRecipe)
+            return createCookedRecipe(imageData: imageData)
+                .flatMap(updateRecipe)
+                .map(Mutation.addCookedRecipe)
         }
     }
     
     private func createCookedRecipe(imageData: Data) -> Observable<CookedRecipe> {
         let imageDataStore = ImageDataStore()
         return imageDataStore.createCookedRecipe(imageData: imageData)
+    }
+    
+    private func updateRecipe(cookedRecipe: CookedRecipe) -> Observable<CookedRecipe> {
+        let recipeDataStore = RecipeDataStore()
+        return recipeDataStore.updateRecipeWith(id: currentState.recipe.id, cookeRecipe: cookedRecipe)
     }
     
     func reduce(state: State, mutation: Mutation) -> State {
