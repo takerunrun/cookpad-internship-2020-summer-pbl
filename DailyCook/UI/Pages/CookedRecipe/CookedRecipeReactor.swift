@@ -11,16 +11,18 @@ import ReactorKit
 final class CookedRecipeReactor: Reactor {
     enum Action {
         case load
+        case refresh
     }
     enum Mutation {
         case setDish(([Recipe], [Recipe], [Recipe]))
+        case setLoading(Bool)
     }
     
     struct State {
-        // TODO: Replace initial test data
         var mainDishRecipeCellReactors: [CookedRecipeListCellReactor] = []
         var sideDishRecipeCellReactors: [CookedRecipeListCellReactor] = []
         var soupRecipeCellReactors: [CookedRecipeListCellReactor] = []
+        var isLoading: Bool = false
     }
     
     let initialState = State()
@@ -30,6 +32,13 @@ final class CookedRecipeReactor: Reactor {
         switch action {
         case .load:
             return loadCookedRecipes().map(Mutation.setDish)
+        case .refresh:
+            if currentState.isLoading { return .empty() }
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                loadCookedRecipes().map(Mutation.setDish),
+                Observable.just(.setLoading(false)),
+            ])
         }
     }
     
@@ -57,6 +66,8 @@ final class CookedRecipeReactor: Reactor {
             state.mainDishRecipeCellReactors = mainRecipes.map { CookedRecipeListCellReactor(recipe: $0) }
             state.sideDishRecipeCellReactors = sideRecipes.map { CookedRecipeListCellReactor(recipe: $0) }
             state.soupRecipeCellReactors = soupRecies.map { CookedRecipeListCellReactor(recipe: $0) }
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
         }
         return state
         
