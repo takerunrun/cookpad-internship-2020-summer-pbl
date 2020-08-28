@@ -100,9 +100,10 @@ struct SeedData {
             category: .side,
             point: "お酢を使うので日持ちし味がしっかり染みるのでお弁当にも入れられます",
             recipeUrl: "https://mariegohan.com/5542",
-            cookedImageUrls: [
-                "CABE30EB-B8D1-431C-994E-D5DDB9ACD767.jpg"
-            ],
+//            cookedImageUrls: [
+//                "CABE30EB-B8D1-431C-994E-D5DDB9ACD767.jpg"
+//            ],
+            cookedImageUrls: [],
             isSkipped: true
         )
         createRecipe(
