@@ -45,6 +45,12 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         setupViewConstraints()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        reactor?.action.onNext(.refresh)
+    }
+    
     // MARK: - Setup Methods
     func setupViews() {
         view.addSubview(scrollView)
