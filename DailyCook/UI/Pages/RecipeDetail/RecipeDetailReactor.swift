@@ -19,10 +19,14 @@ final class RecipeDetailReactor: Reactor {
     struct State {
         let recipe: Recipe
         // TODO: Replace initial test data
-        var cookedRecipeReactors: [RecipeDetailCookedRecipeReactor] = TestData.cookedRecipes(count: 2).map { RecipeDetailCookedRecipeReactor(cookedRecipe: $0) }
+        var cookedRecipeReactors: [RecipeDetailCookedRecipeReactor]
         
         init(recipe: Recipe) {
             self.recipe = recipe
+            self.cookedRecipeReactors = recipe
+                .cookedImageUrls
+                .map { CookedRecipe(date: Date(), imagePath: $0) }
+                .map { RecipeDetailCookedRecipeReactor(cookedRecipe: $0) }
         }
     }
     
