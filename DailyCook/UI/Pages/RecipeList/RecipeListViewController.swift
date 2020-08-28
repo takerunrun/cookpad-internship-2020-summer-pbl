@@ -28,11 +28,14 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         $0.minimumLineSpacing = 24
         $0.minimumInteritemSpacing = 16
         $0.scrollDirection = .vertical
+        $0.sectionInset.top = RecipeListHeaderView.Const.height + 48
     }).then {
         $0.register(Reusable.recipeCell)
-        $0.contentInset = UIEdgeInsets(top: RecipeListHeaderView.Const.height + 120, left: 24, bottom: 24, right: 24)
+        $0.contentInset = UIEdgeInsets(top: 24, left: 24, bottom: 24, right: 24)
         $0.backgroundColor = Color.white
     }
+    
+    private let refreshControl = UIRefreshControl()
     
     // MARK: - Lify Cycles
     override func viewDidLoad() {
@@ -41,18 +44,19 @@ final class RecipeListViewController: UIViewController, ReactorKit.View , ViewCo
         setupViews()
         setupViewConstraints()
         
-//        createSeedData()
+        createSeedData()
     }
     
     // MARK: - Setup Methods
     func setupViews() {
         collectionView.addSubview(header)
         view.addSubview(collectionView)
+        collectionView.refreshControl = refreshControl
     }
     
     func setupViewConstraints() {
         header.snp.makeConstraints {
-            $0.top.equalToSuperview().offset(-(RecipeListHeaderView.Const.height + 60))
+            $0.top.equalToSuperview().offset(24)
             $0.left.equalToSuperview()
             $0.width.equalTo(RecipeListHeaderView.Const.width)
             $0.height.equalTo(RecipeListHeaderView.Const.height)
