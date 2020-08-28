@@ -21,6 +21,10 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     var disposeBag = DisposeBag()
     
     // MARK: - Views
+    private let skipButton = SkipButton().then {
+        $0.frame = CGRect(x: 0, y: 0, width: 96, height: 24)
+    }
+    
     private let contentScrollView = UIScrollView().then {
         $0.showsVerticalScrollIndicator = false
         $0.alwaysBounceVertical = true
@@ -52,6 +56,8 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
     
     // MARK: - Setup Methods
     func setupViews() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: skipButton)
+        
         view.backgroundColor = .white
         view.addSubview(contentScrollView)
         contentScrollView.addSubview(stackView)
