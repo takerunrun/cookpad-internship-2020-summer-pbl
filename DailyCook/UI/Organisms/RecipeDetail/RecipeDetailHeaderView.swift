@@ -28,6 +28,11 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         $0.backgroundColor = Color.textGray.withAlphaComponent(0.7)
     }
     
+    private let cookedImageView = UIImageView().then {
+        $0.contentMode = .scaleAspectFill
+        $0.image = #imageLiteral(resourceName: "cooked")
+    }
+    
     private let recipeNumberLabel = UILabel().then {
         $0.apply(fontStyle: .black, size: 24)
         $0.textColor = Color.textBlack
@@ -82,6 +87,7 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
     func setupViews() {
         addSubview(imageView)
         imageView.addSubview(grayOverView)
+        imageView.addSubview(cookedImageView)
         addSubview(recipeNumberLabel)
         addSubview(recipeNameLabel)
         addSubview(flagImageView)
@@ -99,6 +105,10 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
         }
         grayOverView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        cookedImageView.snp.makeConstraints {
+            $0.top.left.equalToSuperview()
+            $0.size.equalTo(300)
         }
         recipeNumberLabel.snp.makeConstraints {
             $0.top.equalTo(imageView.snp.bottom).offset(16)
@@ -155,6 +165,12 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
             .distinctUntilChanged()
             .map { !$0 }
             .bind(to: grayOverView.rx.isHidden)
+            .disposed(by: disposeBag)
+        
+        reactor.state.map { $0.recipe.isCooked }
+            .distinctUntilChanged()
+            .map { !$0 }
+            .bind(to: cookedImageView.rx.isHidden)
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.recipe.number }
