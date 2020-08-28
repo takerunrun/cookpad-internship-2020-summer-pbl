@@ -18,9 +18,9 @@ final class CookedRecipeReactor: Reactor {
     
     struct State {
         // TODO: Replace initial test data
-        var mainDishRecipeCellReactors: [RecipeListCellReactor] = []
-        var sideDishRecipeCellReactors: [RecipeListCellReactor] = []
-        var soupRecipeCellReactors: [RecipeListCellReactor] = []
+        var mainDishRecipeCellReactors: [CookedRecipeListCellReactor] = []
+        var sideDishRecipeCellReactors: [CookedRecipeListCellReactor] = []
+        var soupRecipeCellReactors: [CookedRecipeListCellReactor] = []
     }
     
     let initialState = State()
@@ -54,9 +54,9 @@ final class CookedRecipeReactor: Reactor {
         var state = state
         switch mutation {
         case let .setDish((mainRecipes, sideRecipes, soupRecies)):
-            state.mainDishRecipeCellReactors = mainRecipes.map { RecipeListCellReactor(recipe: $0) }
-            state.sideDishRecipeCellReactors = sideRecipes.map { RecipeListCellReactor(recipe: $0) }
-            state.soupRecipeCellReactors = soupRecies.map { RecipeListCellReactor(recipe: $0) }
+            state.mainDishRecipeCellReactors = mainRecipes.map { CookedRecipeListCellReactor(recipe: $0) }
+            state.sideDishRecipeCellReactors = sideRecipes.map { CookedRecipeListCellReactor(recipe: $0) }
+            state.soupRecipeCellReactors = soupRecies.map { CookedRecipeListCellReactor(recipe: $0) }
         }
         return state
         

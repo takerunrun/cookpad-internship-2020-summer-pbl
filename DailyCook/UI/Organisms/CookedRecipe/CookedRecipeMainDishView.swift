@@ -21,7 +21,7 @@ final class CookedRecipeMainDishView: UIView, View, ViewConstructor {
     }
     
     struct Reusable {
-        static let recipeCell = ReusableCell<RecipeListCell>()
+        static let recipeCell = ReusableCell<CookedRecipeListCell>()
     }
     
     // MARK: - Variables
