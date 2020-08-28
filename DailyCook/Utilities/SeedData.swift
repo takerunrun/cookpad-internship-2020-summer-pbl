@@ -16,7 +16,7 @@ struct SeedData {
         self.collection = db.collection("recipes")
     }
     
-    func createRecipe(name: String, number: Int, imageUrl: String, category: RecipeCategory, point: String, recipeUrl: String) {
+    func createRecipe(name: String, number: Int, imageUrl: String, category: RecipeCategory, point: String, recipeUrl: String, cookedImageUrls: [String] = []) {
         let firestoreRecipe = FirestoreRecipe(
             id: "\(number)",
             name: name,
@@ -26,7 +26,7 @@ struct SeedData {
             point: point,
             recipeUrl: recipeUrl,
             isSkipped: false,
-            cookedImageUrls: []
+            cookedImageUrls: cookedImageUrls
         )
         _ = try! collection.addDocument(from: firestoreRecipe) { error in
             if let error = error {
