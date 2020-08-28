@@ -18,7 +18,7 @@ struct Recipe: Equatable {
     let recipeUrl: String
     let cookedImageUrls: [String]
     let isCooked: Bool
-    let isSkipped: Bool
+    var isSkipped: Bool
     var isLocked: Bool
 }
 
