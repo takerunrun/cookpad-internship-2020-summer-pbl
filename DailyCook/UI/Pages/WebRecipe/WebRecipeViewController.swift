@@ -19,7 +19,7 @@ class WebRecipeViewController: UIViewController, ViewConstructor {
     private var activityIndicatorView = UIActivityIndicatorView()
     
     init(url: String) {
-        self.url = URL(string: "https://mariegohan.com/2669")
+        self.url = URL(string: url)
         super.init(nibName: nil, bundle: nil)
     }
     
