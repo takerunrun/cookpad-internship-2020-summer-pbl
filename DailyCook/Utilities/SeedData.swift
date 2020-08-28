@@ -140,12 +140,12 @@ struct SeedData {
         
         // Locked Recipe
         createRecipe(
-            name: "もやしナムル",
+            name: "なすの煮びたし",
             number: 10,
-            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/04/yamitsukimoyashi-768x512.jpg",
+            imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2017/01/IMG_3478-768x512.jpg",
             category: .side,
-            point: "週末に作り置きする時には倍量で作ってもいいでしょう！",
-            recipeUrl: "https://mariegohan.com/2063"
+            point: "揚げない・煮ない・レンチンするだけの簡単調理で、ちゃんとなすの煮びたしが出来上がります",
+            recipeUrl: "https://mariegohan.com/1114"
         )
         createRecipe(
             name: "やみつき無限キャベツ",
