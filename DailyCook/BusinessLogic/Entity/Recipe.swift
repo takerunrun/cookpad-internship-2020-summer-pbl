@@ -34,7 +34,7 @@ extension Recipe {
         self.cookedImageUrls = firestoreRecipe.cookedImageUrls
         self.isCooked = firestoreRecipe.cookedImageUrls.count != 0
         self.isSkipped = firestoreRecipe.isSkipped
-        self.isLocked = firestoreRecipe.cookedImageUrls.count == 0
+        self.isLocked = firestoreRecipe.cookedImageUrls.count == 0 && !firestoreRecipe.isSkipped
     }
 }
 
