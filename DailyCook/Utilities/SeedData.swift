@@ -75,7 +75,7 @@ struct SeedData {
             name: "チキンのトマト煮",
             number: 4,
             imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2016/12/PC052350-768x576.jpg",
-            category: .side,
+            category: .main,
             point: "ワイン不要、どこの家にも常備している調味料だけで作れます",
             recipeUrl: "https://mariegohan.com/734",
             cookedImageUrls: [
@@ -165,7 +165,7 @@ struct SeedData {
             name: "チキンのトマト煮",
             number: 13,
             imageUrl: "https://mariegohan.com/sys/wp-content/uploads/2016/12/PC052350-768x576.jpg",
-            category: .side,
+            category: .main,
             point: "ワイン不要、どこの家にも常備している調味料だけで作れます",
             recipeUrl: "https://mariegohan.com/734"
         )
