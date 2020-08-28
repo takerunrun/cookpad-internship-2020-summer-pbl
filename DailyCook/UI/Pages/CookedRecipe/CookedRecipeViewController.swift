@@ -22,6 +22,8 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         $0.contentInset.bottom = 24
     }
     
+    private let refreshControl = UIRefreshControl()
+    
     private let stackView = UIStackView().then {
         $0.axis = .vertical
         $0.alignment = .fill
@@ -46,6 +48,7 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
     // MARK: - Setup Methods
     func setupViews() {
         view.addSubview(scrollView)
+        scrollView.refreshControl = refreshControl
         scrollView.addSubview(stackView)
         stackView.addArrangedSubview(mainDishView)
         stackView.setCustomSpacing(32, after: mainDishView)
@@ -71,6 +74,12 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
         
         // Action
         reactor.action.onNext(.load)
+        
+        refreshControl.rx.controlEvent(.valueChanged)
+            .bind { _ in
+                reactor.action.onNext(.refresh)
+            }
+            .disposed(by: disposeBag)
         
         mainDishView.collectionView.rx.itemSelected
             .bind { [weak self] indexPath in
@@ -100,5 +109,12 @@ final class CookedRecipeViewController: UIViewController, View, ViewConstructor 
             .disposed(by: disposeBag)
         
         // State
+        reactor.state.map { $0.isLoading }
+            .distinctUntilChanged()
+            .filter { !$0 }
+            .bind { [weak self] _ in
+                self?.refreshControl.endRefreshing()
+            }
+            .disposed(by: disposeBag)
     }
 }
