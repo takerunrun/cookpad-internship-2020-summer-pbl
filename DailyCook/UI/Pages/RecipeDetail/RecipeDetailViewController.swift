@@ -104,6 +104,11 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
             .bind(to: skipButton.rx.isSkipped)
             .disposed(by: disposeBag)
         
+        reactor.state.map { $0.recipe.cookedImageUrls.count > 0 }
+            .distinctUntilChanged()
+            .bind(to: skipButton.rx.isHidden)
+            .disposed(by: disposeBag)
+        
         reactor.state.map { $0.cookedRecipeReactors }
             .distinctUntilChanged()
             .bind(to: cookedRecipeCollectionView.rx.items(Reusable.cookedRecipeCell)) { _, reactor, cell in
@@ -112,7 +117,7 @@ final class RecipeDetailViewController: UIViewController, View, ViewConstructor 
             .disposed(by: disposeBag)
         
         reactor.state.map { $0.cookedRecipeReactors.count }
-        .distinctUntilChanged()
+            .distinctUntilChanged()
             .bind { [weak self] count in
                 self?.cookedRecipeCollectionView.removeConstraints(self?.cookedRecipeCollectionView.constraints ?? [])
                 self?.cookedRecipeCollectionView.snp.makeConstraints {
