@@ -12,14 +12,17 @@ import Firebase
 final class RecipeListReactor: Reactor {
     enum Action {
         case load
+        case refresh
     }
     enum Mutation {
         case setRecipeCellReactors([Recipe])
+        case setLoading(Bool)
     }
     
     struct State {
         var todaysRecipe: Recipe = TestData.noRecipe()
         var recipeCellReactors: [RecipeListCellReactor] = []
+        var isLoading: Bool = false
     }
     
     let initialState = State()
@@ -29,6 +32,13 @@ final class RecipeListReactor: Reactor {
         switch action {
         case .load:
             return loadRecipes().map(Mutation.setRecipeCellReactors)
+        case .refresh:
+            if currentState.isLoading { return .empty() }
+            return Observable.concat([
+                Observable.just(.setLoading(true)),
+                loadRecipes().map(Mutation.setRecipeCellReactors),
+                Observable.just(.setLoading(false)),
+            ])
         }
     }
     
@@ -48,6 +58,8 @@ final class RecipeListReactor: Reactor {
                 state.todaysRecipe = recipes[index]
             }
             state.recipeCellReactors = recipes.map { RecipeListCellReactor(recipe: $0) }
+        case let .setLoading(isLoading):
+            state.isLoading = isLoading
         }
         return state
     }
