@@ -196,7 +196,8 @@ final class RecipeDetailHeaderView: UIView, View, ViewConstructor {
                     return "美味しかったらまた今度作ってみよう！"
                 } else {
                     // TODO: Replace with next recipe number
-                    return "作って写真をのせると #006 に進めるよ！"
+                    let number = reactor.currentState.recipe.number + 1
+                    return "作って写真をのせると #\(String(format: "%03d", number)) に進めるよ！"
                 }
             }
             .bind(to: postImageMessageLabel.rx.text)
