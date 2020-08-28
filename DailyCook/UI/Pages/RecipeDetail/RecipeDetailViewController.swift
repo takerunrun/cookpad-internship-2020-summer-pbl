@@ -151,7 +151,7 @@ extension RecipeDetailViewController: UIImagePickerControllerDelegate, UINavigat
         guard let image = info[.originalImage] as? UIImage else {
             return
         }
-        let imageData = image.jpegData(compressionQuality: 0.1)
+        let imageData = image.jpegData(compressionQuality: 1.0)
         reactor?.action.onNext(.postImageData(imageData))
     }
 }
