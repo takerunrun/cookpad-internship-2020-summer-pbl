@@ -432,6 +432,7 @@
 		846A599024F78442003E3E66 /* CookedRecipe */ = {
 			isa = PBXGroup;
 			children = (
+				846D5DA624F8ABE70047E8D8 /* CookedRecipeListCell */,
 				846A599124F78482003E3E66 /* CookedRecipeMainDishView.swift */,
 				846A599324F78B61003E3E66 /* CookedRecipeSideDishView.swift */,
 				846A599524F78D83003E3E66 /* CookedRecipeSoupView.swift */,
@@ -454,6 +455,13 @@
 				846D5DA224F87C9D0047E8D8 /* RecipeDataStore.swift */,
 			);
 			path = DataStore;
+			sourceTree = "<group>";
+		};
+		846D5DA624F8ABE70047E8D8 /* CookedRecipeListCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CookedRecipeListCell;
 			sourceTree = "<group>";
 		};
 		E7D54B7B3DA1B33FE71B62D5 /* Pods */ = {
