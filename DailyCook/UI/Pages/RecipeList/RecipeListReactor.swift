@@ -53,7 +53,9 @@ final class RecipeListReactor: Reactor {
         switch mutation {
         case let .setRecipeCellReactors(recipes):
             var recipes = recipes
-            if let index = recipes.firstIndex { $0.isCooked == false } {
+            if let index = recipes.firstIndex { recipe in
+                return !recipe.isCooked && !recipe.isSkipped
+            } {
                 recipes[index].isLocked = false
                 state.todaysRecipe = recipes[index]
             }
